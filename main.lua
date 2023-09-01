@@ -13,10 +13,27 @@ function myGameSetUp()
 	gfx.setBackgroundColor(gfx.kColorWhite)
 
 	-- needs to be permanent
-	gfx.drawText("Playdate Black Box Puzzles", 5, 5)
+	gfx.drawText("Playdate Black Box Puzzles yay!", 5, 5)
 
-	lamp_1 = define_lamp(false, 100, 100, 40)
-	draw_lamp(lamp_1)
+	-- lamp_1 = define_lamp(false, 100, 100, 40)
+	-- draw_lamp(lamp_1)
+
+	-- lamp_2 = gfx.image.new("images/lamp-on.png")
+	-- lamp_2:draw(30, 30)
+	lamp_2 = define_lamp(false, 30, 30, "lamp-on.png")
+	draw_lamp(lamp_2)
+
+	lamp_3 = gfx.image.new("images/lamp-on.png")
+	lamp_3:draw(40, 120)
+	lamp_4 = gfx.image.new("images/lamp-on.png")
+	lamp_4:draw(102, 125)
+	-- good one: x + 63, because start at x for 64 pixels
+	lamp_5 = gfx.image.new("images/lamp-on.png")
+	lamp_5:draw(165, 130)
+	lamp_6 = gfx.image.new("images/lamp-on.png")
+	lamp_6:draw(229, 135)
+	lamp_7 = gfx.image.new("images/lamp-on.png")
+	lamp_7:draw(294, 140)
 
 	-- lamp_a = {
 	-- 	state = true,
@@ -37,10 +54,17 @@ function playdate.update()
 
     if playdate.buttonJustPressed( playdate.kButtonLeft ) then
         -- gfx.fillCircleAtPoint(lamp_a['x'], lamp_a['y'], lamp_a['radius'])
-        toggle_lamp(lamp_1)
-        gfx.clear()
-        draw_lamp(lamp_1)
-        print("lamp 1 state is " .. tostring(lamp_1['state']))
+        -- toggle_lamp(lamp_1)
+        -- gfx.clear()
+        -- draw_lamp(lamp_1)
+        -- print("lamp 1 state is " .. tostring(lamp_1['state']))
+        -- lamp_2:load("images/lamp-off.png")
+        -- lamp_2 = lamp_2:invertedImage()
+        -- lamp_2:setInverted(true)
+        -- lamp_2:draw(30, 30)
+        -- playdate.graphics.image:setInverted(flag)
+        toggle_lamp(lamp_2)
+        draw_lamp(lamp_2)
     end
     if playdate.buttonJustPressed( playdate.kButtonUp ) then
     end

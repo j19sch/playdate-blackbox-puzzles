@@ -4,6 +4,11 @@ Building some [Black Box Puzzles](http://blackboxpuzzles.workroomprds.com/) for 
 
 Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-productions.com/)
 
+
+## Notes
+- `pdc -k <input>`
+- Sublime build system: `"cmd": ["pdc", "-k", "$folder"]`
+
 ## Useful links
 
 ### Playdate SDK
@@ -13,3 +18,6 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 
 ### Lua
 - https://learnxinyminutes.com/docs/lua/
+
+### Pixel art
+- Gimp: https://www.youtube.com/watch?v=oAaoh49yf5A

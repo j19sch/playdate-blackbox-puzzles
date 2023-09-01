@@ -13,7 +13,7 @@ function myGameSetUp()
 	gfx.setBackgroundColor(gfx.kColorWhite)
 
 	-- needs to be permanent
-	gfx.drawText("Playdate Black Box Puzzles yay!", 5, 5)
+	gfx.drawText("Playdate Black Box Puzzles", 5, 5)
 
 	-- lamp_1 = define_lamp(false, 100, 100, 40)
 	-- draw_lamp(lamp_1)
@@ -22,6 +22,9 @@ function myGameSetUp()
 	-- lamp_2:draw(30, 30)
 	lamp_2 = define_lamp(false, 30, 30, "lamp-on.png")
 	draw_lamp(lamp_2)
+
+	lamp_10 = Lamp:new(100, 30, "lamp-on.png")
+	lamp_10:draw()
 
 	lamp_3 = gfx.image.new("images/lamp-on.png")
 	lamp_3:draw(40, 120)
@@ -66,6 +69,10 @@ function playdate.update()
         toggle_lamp(lamp_2)
         draw_lamp(lamp_2)
     end
+    if playdate.buttonJustPressed( playdate.kButtonRight ) then
+    	lamp_10:toggle()
+    	lamp_10:draw()
+	end
     if playdate.buttonJustPressed( playdate.kButtonUp ) then
     end
     if playdate.buttonJustPressed( playdate.kButtonDown ) then

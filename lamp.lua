@@ -1,5 +1,41 @@
 local gfx <const> = playdate.graphics
 
+
+-- using inheritance
+-- -----------------
+-- ToDo
+
+
+
+-- using a "class"
+-- ---------------
+
+Lamp = {}
+
+function Lamp:new(x_pos, y_pos, image_file)
+    newObj = {
+        x = x_pos,
+        y = y_pos,
+        image = gfx.image.new("images/" .. image_file)
+    }
+  self.__index = self
+  return setmetatable(newObj, self)
+end
+
+function Lamp:draw()
+  self.image:draw(self.x, self.y)
+end
+
+-- How to tell if image has been inverted? playdate.graphics.image:sample(x, y)?
+function Lamp:toggle()
+    self.image = self.image:invertedImage()
+end
+
+
+
+-- using functions
+-- ---------------
+
 function define_lamp(state, x, y, image)
     local lamp = {}
     lamp['image'] = gfx.image.new("images/" .. image)
@@ -19,6 +55,8 @@ function toggle_lamp(lamp)
     lamp['image'] = lamp['image']:invertedImage()
 end
 
+
+-- using drawing, which runs into problems with updates
 -- function define_lamp(state, x, y, radius)
 --     local lamp = {}
 --     lamp['state'] = state

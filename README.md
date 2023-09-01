@@ -21,3 +21,7 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 
 ### Pixel art
 - Gimp: https://www.youtube.com/watch?v=oAaoh49yf5A
+
+### Fonts
+- font conversion: https://kaasiand.cool/tophat/
+- load fonts without file extention: `gfx.font.new("fonts/JetBrainsMono-Medium-20")`

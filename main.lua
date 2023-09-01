@@ -12,31 +12,33 @@ local gfx <const> = playdate.graphics
 function myGameSetUp()
 	gfx.setBackgroundColor(gfx.kColorWhite)
 
-	-- needs to be permanent
 	gfx.drawText("Playdate Black Box Puzzles", 5, 5)
+	gfx.drawText("Playdate Black Box Puzzles", 5, 20)
+
+	-- jetbrains:drawText("Playdate Black Box Puzzles", 5, 200)
 
 	-- lamp_1 = define_lamp(false, 100, 100, 40)
 	-- draw_lamp(lamp_1)
 
 	-- lamp_2 = gfx.image.new("images/lamp-on.png")
 	-- lamp_2:draw(30, 30)
-	lamp_2 = define_lamp(false, 30, 30, "lamp-on.png")
+	lamp_2 = define_lamp(false, 30, 50, "lamp-on.png")
 	draw_lamp(lamp_2)
 
-	lamp_10 = Lamp:new(100, 30, "lamp-on.png")
+	lamp_10 = Lamp:new(100, 50, "lamp-on.png")
 	lamp_10:draw()
 
 	lamp_3 = gfx.image.new("images/lamp-on.png")
-	lamp_3:draw(40, 120)
+	lamp_3:draw(40, 150)
 	lamp_4 = gfx.image.new("images/lamp-on.png")
-	lamp_4:draw(102, 125)
+	lamp_4:draw(102, 155)
 	-- good one: x + 63, because start at x for 64 pixels
 	lamp_5 = gfx.image.new("images/lamp-on.png")
-	lamp_5:draw(165, 130)
+	lamp_5:draw(165, 160)
 	lamp_6 = gfx.image.new("images/lamp-on.png")
-	lamp_6:draw(229, 135)
+	lamp_6:draw(229, 165)
 	lamp_7 = gfx.image.new("images/lamp-on.png")
-	lamp_7:draw(294, 140)
+	lamp_7:draw(294, 170)
 
 	-- lamp_a = {
 	-- 	state = true,

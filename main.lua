@@ -13,7 +13,7 @@ local gfx <const> = playdate.graphics
 function myGameSetUp()
 	gfx.setBackgroundColor(gfx.kColorWhite)
 
-	gfx.drawText("Playdate Blackbox Puzzles", 5, 5)
+	gfx.drawText("Playdate Black Box Puzzles", 5, 5)
 
 	button_top = Button:new(80, 40, false)
 	button_top:draw()
@@ -37,23 +37,24 @@ myGameSetUp()
 
 function playdate.update()
 	
-
-    if playdate.buttonJustPressed( playdate.kButtonLeft ) then
-	   	button_left:toggle_and_draw()
-    end
-    if playdate.buttonJustPressed( playdate.kButtonRight ) then
-	   	button_right:toggle_and_draw()
+	if toggle.flipped == true then
+	    if playdate.buttonJustPressed( playdate.kButtonUp ) then
+    		button_top:toggle_and_draw()
+    	end
+    	if playdate.buttonJustPressed( playdate.kButtonDown ) then
+    		button_bottom:toggle_and_draw()
+    	end
+	else
+	    if playdate.buttonJustPressed( playdate.kButtonLeft ) then
+		   	button_left:toggle_and_draw()
+    	end
+    	if playdate.buttonJustPressed( playdate.kButtonRight ) then
+	   		button_right:toggle_and_draw()
+		end
 	end
-    if playdate.buttonJustPressed( playdate.kButtonUp ) then
-    	button_top:toggle_and_draw()
-    end
-    if playdate.buttonJustPressed( playdate.kButtonDown ) then
-    	button_bottom:toggle_and_draw()
-    end
+
 
     if playdate.buttonJustPressed( playdate.kButtonA) then
-    	print("A button pressed")
-    	toggle:flip()
-    	toggle:draw()
+    	toggle:flip_and_draw()
 	end
 end

@@ -3,7 +3,8 @@ import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
 
-import "lamp"
+import "button"
+import "toggle"
 
 local gfx <const> = playdate.graphics
 
@@ -12,43 +13,23 @@ local gfx <const> = playdate.graphics
 function myGameSetUp()
 	gfx.setBackgroundColor(gfx.kColorWhite)
 
-	gfx.drawText("Playdate Black Box Puzzles", 5, 5)
-	gfx.drawText("Playdate Black Box Puzzles", 5, 20)
+	gfx.drawText("Playdate Blackbox Puzzles", 5, 5)
 
-	-- jetbrains:drawText("Playdate Black Box Puzzles", 5, 200)
+	button_top = Button:new(80, 40, false)
+	button_top:draw()
 
-	-- lamp_1 = define_lamp(false, 100, 100, 40)
-	-- draw_lamp(lamp_1)
+	button_left = Button:new(15, 72, false)
+	button_left:draw()
 
-	-- lamp_2 = gfx.image.new("images/lamp-on.png")
-	-- lamp_2:draw(30, 30)
-	lamp_2 = define_lamp(false, 30, 50, "lamp-on.png")
-	draw_lamp(lamp_2)
+	button_bottom = Button:new(80, 105, false)
+	button_bottom:draw()
 
-	lamp_10 = Lamp:new(100, 50, "lamp-on.png")
-	lamp_10:draw()
+	button_right = Button:new(145, 72, false)
+	button_right:draw()
 
-	lamp_3 = gfx.image.new("images/lamp-on.png")
-	lamp_3:draw(40, 150)
-	lamp_4 = gfx.image.new("images/lamp-on.png")
-	lamp_4:draw(102, 155)
-	-- good one: x + 63, because start at x for 64 pixels
-	lamp_5 = gfx.image.new("images/lamp-on.png")
-	lamp_5:draw(165, 160)
-	lamp_6 = gfx.image.new("images/lamp-on.png")
-	lamp_6:draw(229, 165)
-	lamp_7 = gfx.image.new("images/lamp-on.png")
-	lamp_7:draw(294, 170)
+	toggle = Toggle:new(300, 72)
+	toggle:draw()
 
-	-- lamp_a = {
-	-- 	state = true,
-	-- 	x = 100,
-	-- 	y = 100,
-	-- 	radius = 40
-	-- }
-	-- gfx.drawCircleAtPoint(lamp_a['x'], lamp_a['y'], lamp_a['radius'])
-	-- gfx.fillCircleAtPoint(200, 170, 40)
-	-- gfx.fillCircleAtPoint(300, 100, 40)
 end
 
 myGameSetUp()
@@ -58,25 +39,21 @@ function playdate.update()
 	
 
     if playdate.buttonJustPressed( playdate.kButtonLeft ) then
-        -- gfx.fillCircleAtPoint(lamp_a['x'], lamp_a['y'], lamp_a['radius'])
-        -- toggle_lamp(lamp_1)
-        -- gfx.clear()
-        -- draw_lamp(lamp_1)
-        -- print("lamp 1 state is " .. tostring(lamp_1['state']))
-        -- lamp_2:load("images/lamp-off.png")
-        -- lamp_2 = lamp_2:invertedImage()
-        -- lamp_2:setInverted(true)
-        -- lamp_2:draw(30, 30)
-        -- playdate.graphics.image:setInverted(flag)
-        toggle_lamp(lamp_2)
-        draw_lamp(lamp_2)
+	   	button_left:toggle_and_draw()
     end
     if playdate.buttonJustPressed( playdate.kButtonRight ) then
-    	lamp_10:toggle()
-    	lamp_10:draw()
+	   	button_right:toggle_and_draw()
 	end
     if playdate.buttonJustPressed( playdate.kButtonUp ) then
+    	button_top:toggle_and_draw()
     end
     if playdate.buttonJustPressed( playdate.kButtonDown ) then
+    	button_bottom:toggle_and_draw()
     end
+
+    if playdate.buttonJustPressed( playdate.kButtonA) then
+    	print("A button pressed")
+    	toggle:flip()
+    	toggle:draw()
+	end
 end

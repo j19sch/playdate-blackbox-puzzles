@@ -13,7 +13,7 @@ local gfx <const> = playdate.graphics
 function myGameSetUp()
 	gfx.setBackgroundColor(gfx.kColorWhite)
 
-	gfx.drawText("Playdate Black Box Puzzles", 5, 5)
+	gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
 
 	puzzle001 = Puzzle001:new()
 	puzzle001:init()

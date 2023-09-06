@@ -9,6 +9,13 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 - `pdc -k <input>`
 - Sublime build system: `"cmd": ["pdc", "-k", "$folder"]`
 
+
+## Used in this repo
+- Playdate SDK
+- Mozart NBP Font by total FontGeek DTF, Ltd.
+
+---
+
 ## Useful links
 
 ### Playdate SDK

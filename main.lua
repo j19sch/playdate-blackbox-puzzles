@@ -1,10 +1,10 @@
+-- todo: clean up CoreLibs imports
 import "CoreLibs/object"
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
 
-import "button"
-import "toggle"
+import "puzzle001"
 
 local gfx <const> = playdate.graphics
 
@@ -15,20 +15,9 @@ function myGameSetUp()
 
 	gfx.drawText("Playdate Black Box Puzzles", 5, 5)
 
-	button_top = Button:new(80, 40, false)
-	button_top:draw()
-
-	button_left = Button:new(15, 72, false)
-	button_left:draw()
-
-	button_bottom = Button:new(80, 105, false)
-	button_bottom:draw()
-
-	button_right = Button:new(145, 72, false)
-	button_right:draw()
-
-	toggle = Toggle:new(300, 72)
-	toggle:draw()
+	puzzle001 = Puzzle001:new()
+	puzzle001:init()
+	puzzle001:draw()
 
 end
 
@@ -36,25 +25,7 @@ myGameSetUp()
 
 
 function playdate.update()
-	
-	if toggle.flipped == true then
-	    if playdate.buttonJustPressed( playdate.kButtonUp ) then
-    		button_top:toggle_and_draw()
-    	end
-    	if playdate.buttonJustPressed( playdate.kButtonDown ) then
-    		button_bottom:toggle_and_draw()
-    	end
-	else
-	    if playdate.buttonJustPressed( playdate.kButtonLeft ) then
-		   	button_left:toggle_and_draw()
-    	end
-    	if playdate.buttonJustPressed( playdate.kButtonRight ) then
-	   		button_right:toggle_and_draw()
-		end
-	end
 
+	puzzle001:run()
 
-    if playdate.buttonJustPressed( playdate.kButtonA) then
-    	toggle:flip_and_draw()
-	end
 end

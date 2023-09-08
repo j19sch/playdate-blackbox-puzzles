@@ -14,6 +14,11 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 - Playdate SDK
 - Mozart NBP Font by total FontGeek DTF, Ltd.
 
+## Testing
+- followed instructions mentioned below
+- requires building the tests, then running them in the simulator
+- not sure what `testOutputFilename` does
+
 ---
 
 ## Useful links
@@ -22,6 +27,9 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 - https://play.date/dev/
 - https://play.date/dev/links/
 - https://sdk.play.date/2.0.3/Inside%20Playdate.html
+
+### Unit testing with the Playdate SDK
+- https://devforum.play.date/t/unit-testing-game-lib/2083
 
 ### Lua
 - https://learnxinyminutes.com/docs/lua/

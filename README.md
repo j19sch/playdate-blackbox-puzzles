@@ -21,6 +21,12 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 
 ---
 
+## ToDos
+- `pdc` without `./tests`
+- add https://github.com/mpeterv/luacheck
+
+---
+
 ## Useful links
 
 ### Playdate SDK

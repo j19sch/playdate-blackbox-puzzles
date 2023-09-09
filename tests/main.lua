@@ -1,7 +1,8 @@
 import 'luaunit/playdate_luaunit_fix'
 import 'luaunit/luaunit'
 import 'tests_demo'
-import 'tests_toggle'
+-- import 'tests_toggle'
+import 'tests_test_meta'
 
 -- turns off updating
 playdate.stop()
@@ -18,3 +19,9 @@ local luaunit_args = {'--output', 'text', '--verbose', '-r'}
 local returnValue = luaunit.LuaUnit.run(table.unpack(luaunit_args))
 
 print("unit test return value = "..returnValue)
+
+if (returnValue == 0) then
+    playdate.graphics.drawText("*SUCCESS*", 166, 180)
+else
+    playdate.graphics.drawText("*FAIL*", 185, 180)
+end

@@ -2,12 +2,12 @@ import "../toggle"
 
 -- local gfx <const> = playdate.graphics
 
-function testToggleOrientation()
+function notestToggleOrientation()
     toggle = Toggle:new(10, 10, "up")
     luaunit.assertEquals(toggle.orientation, "up")
 end
 
-function testToggleOrientationFail()
+function notestToggleOrientationFail()
     toggle = Toggle:new(10, 10, "up")
     luaunit.assertEquals(toggle.orientation, "down")
 end

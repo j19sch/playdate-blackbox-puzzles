@@ -13,20 +13,22 @@ function Toggle:new(x_pos, y_pos, start_state)
         down = "toggle-down.png",
         left = "toggle-left.png"
     }
+    local img = gfx.image.new("assets/images/" .. image_table[start_state])
+    assert(img, "could not load image for tottle")
     newObj = {
         x = x_pos,
         y = y_pos,
         flipped = false,
         orientation = start_state,
         img_table = image_table,
-        image = gfx.image.new("images/" .. image_table[start_state])
+        image = img
     }
     self.__index = self
     return setmetatable(newObj, self)
 end
 
 function Toggle:draw()
-  self.image:draw(self.x, self.y)
+    self.image:draw(self.x, self.y)
 end
 
 function Toggle:flip()
@@ -40,7 +42,7 @@ function Toggle:flip()
     }
     self.orientation = flip_table[self.orientation]
 
-    self.image = gfx.image.new("images/" .. self.img_table[self.orientation])
+    self.image = gfx.image.new("assets/images/" .. self.img_table[self.orientation])
 end
 
 function Toggle:flip_and_draw()

@@ -21,6 +21,7 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 - requires building the tests, then running them in the simulator
 - not sure what `testOutputFilename` does
 - ToDo: figure out how to get fonts and images into `tests`
+- Makefile: `cp` with `-u` (update, UPDATE={all,none,older(default)} ) or `-n` (no-clobber, i.e. no overwrites)
 
 ---
 

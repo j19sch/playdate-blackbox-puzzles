@@ -1,8 +1,9 @@
 import 'luaunit/playdate_luaunit_fix'
 import 'luaunit/luaunit'
-import 'tests_demo'
--- import 'tests_toggle'
-import 'tests_test_meta'
+
+import 'test_button'
+import 'test_toggle'
+
 
 -- turns off updating
 playdate.stop()

@@ -13,7 +13,7 @@ local gfx <const> = playdate.graphics
 Button = {}
 
 function Button:new(x_pos, y_pos, pressed)
-    local img = gfx.image.new("images/button.png")
+    local img = gfx.image.new("assets/images/button.png")
     if pressed == true then
         img = img:invertedImage()
     end

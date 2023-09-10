@@ -1,4 +1,4 @@
-import "../toggle"
+import "../source/toggle"
 
 -- local gfx <const> = playdate.graphics
 

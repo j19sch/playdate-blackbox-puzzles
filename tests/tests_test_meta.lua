@@ -2,7 +2,7 @@ Button = {}
 
 -- local gfx <const> = playdate.graphics
 
-import '../button'
+import '../source/button'
 
 -- function Button:new(x_pos, y_pos, pressed)
 --     local img = gfx.image.new("/images/button.png")

@@ -8,6 +8,8 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 ## Notes
 - `pdc -k <input>`
 - Sublime build system: `"cmd": ["pdc", "-k", "$folder"]`
+- `pdc -k source pbbp.pdx`
+- `pdc -k -I source tests pbbp-tests.pdx` requires copy of assets into tests folder
 
 
 ## Used in this repo
@@ -18,6 +20,7 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 - followed instructions mentioned below
 - requires building the tests, then running them in the simulator
 - not sure what `testOutputFilename` does
+- ToDo: figure out how to get fonts and images into `tests`
 
 ---
 
@@ -37,6 +40,11 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 ### Unit testing with the Playdate SDK
 - https://devforum.play.date/t/unit-testing-game-lib/2083
 
+### Testing Lua
+- https://martin-fieber.de/blog/how-to-test-your-lua/
+- https://github.com/mockagne/mockagne
+- https://github.com/henry4k/lua-mock
+
 ### Lua
 - https://learnxinyminutes.com/docs/lua/
 
@@ -46,3 +54,6 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 ### Fonts
 - font conversion: https://kaasiand.cool/tophat/
 - load fonts without file extention: `gfx.font.new("fonts/JetBrainsMono-Medium-20")`
+
+### Makefile
+- https://makefiletutorial.com/

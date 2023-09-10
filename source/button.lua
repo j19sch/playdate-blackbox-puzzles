@@ -14,10 +14,11 @@ Button = {}
 
 function Button:new(x_pos, y_pos, pressed)
     local img = gfx.image.new("images/button.png")
-    assert(img, "failed to load image for button element")
     if pressed == true then
-        img = self.image:invertedImage()
+        img = img:invertedImage()
     end
+    assert(img, "failed to load image for button element")
+
     newObj = {
         x = x_pos,
         y = y_pos,

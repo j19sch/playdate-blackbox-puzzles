@@ -1,16 +1,18 @@
 import '../source/button'
 
-function testButtonFalse()
+TestButton = {}
+
+function TestButton:testButtonFalse()
     local button = Button:new(10, 10, false)
     luaunit.assertEquals(button.pressed, false)
 end
 
-function testButtonTrue()
+function TestButton:testButtonTrue()
     local button = Button:new(10, 10, true)
     luaunit.assertEquals(button.pressed, true)
 end
 
-function testButtonToggle()
+function TestButton:testButtonToggle()
     local button = Button:new(10, 10, false)
     luaunit.assertEquals(button.pressed, false)
     button:toggle()

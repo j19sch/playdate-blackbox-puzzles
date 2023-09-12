@@ -1,3 +1,5 @@
+-- luacheck: ignore playdate
+
 local gfx <const> = playdate.graphics
 
 Toggle = {}
@@ -15,7 +17,7 @@ function Toggle:new(x_pos, y_pos, start_state)
     }
     local img = gfx.image.new("assets/images/" .. image_table[start_state])
     assert(img, "could not load image for tottle")
-    newObj = {
+    local newObj = {
         x = x_pos,
         y = y_pos,
         flipped = false,

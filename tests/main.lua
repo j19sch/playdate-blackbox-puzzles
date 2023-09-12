@@ -4,6 +4,9 @@ import 'luaunit/luaunit'
 import 'test_button'
 import 'test_toggle'
 import 'test_puzzle001'
+import 'test_puzzle001a'
+import 'test_puzzle001b'
+import 'test_puzzle001c'
 
 
 -- turns off updating

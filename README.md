@@ -11,6 +11,8 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 - `pdc -k source pbbp.pdx`
 - `pdc -k -I source tests pbbp-tests.pdx` requires copy of assets into tests folder
 
+### Playdate SDK
+- playdate.getButtonState() is cool but uses bitmasks
 
 ## Used in this repo
 - Playdate SDK
@@ -26,8 +28,12 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 ---
 
 ## ToDos
-- `pdc` without `./tests`
-- add https://github.com/mpeterv/luacheck
+- add https://github.com/mpeterv/luacheck, see branch
+
+---
+
+## Puzzle ideas
+- puzzle that uses playdate.buttonIsPressed(button)
 
 ---
 

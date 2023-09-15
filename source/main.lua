@@ -13,6 +13,7 @@ local gfx <const> = playdate.graphics
 
 -- screen: 400 x 240
 
+
 function myGameSetUp()
 	gfx.setBackgroundColor(gfx.kColorWhite)
 
@@ -21,12 +22,22 @@ function myGameSetUp()
 	game_state = "menu"
 	puzzle_loaded = false
 
+	local menu = playdate.getSystemMenu()
+
+	local menuItem, error = menu:addMenuItem("to title", function()
+    	print("menu: going back to title screen")
+		playdate.graphics.clear()
+		game_state = "menu"
+		puzzle_loaded = false
+	end)
+	
 end
 
 myGameSetUp()
 
 
 function playdate.update()
+
 	gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
 
 	if game_state == "menu" then

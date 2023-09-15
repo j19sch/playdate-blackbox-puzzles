@@ -2,4 +2,4 @@ name=Playdate Blackbox Puzzles
 author=Joep Schuurkes
 description=Black Box Puzzles on Playdate, inspired by workroomprds
 bundleID=com.panic.blackboxpuzzles
-imagePath=metadata
+imagePath=assets/metadata

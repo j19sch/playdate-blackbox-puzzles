@@ -19,14 +19,13 @@ function myGameSetUp()
 
 	-- gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
 
-	game_state = "menu"
+	game_state = "title"
 	puzzle_loaded = false
 
 	local menu = playdate.getSystemMenu()
 
-	local menuItem, error = menu:addMenuItem("to title", function()
-    	print("menu: going back to title screen")
-		playdate.graphics.clear()
+	local menuItem, error = menu:addMenuItem("to menu", function()
+    	print("menu: going back to the menu")
 		game_state = "menu"
 		puzzle_loaded = false
 	end)
@@ -38,17 +37,27 @@ myGameSetUp()
 
 function playdate.update()
 
-	gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
+	if game_state == "title" then
+		local title_screen = gfx.image.new("assets/images/title-screen.png")
+		title_screen:draw(0, 0)
+		gfx.drawText("Press A to pick a puzzle", 100, 150)
 
-	if game_state == "menu" then
-		gfx.drawText("Press A to start a puzzle", 100, 100)
+	    if playdate.buttonJustPressed( playdate.kButtonA ) then
+	    	game_state = "menu"
+	    	playdate.graphics.clear() -- best place to do this?
+		end
+
+	elseif game_state == "menu" then
+		playdate.graphics.clear()
+		gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
+		gfx.drawText("Press A to start Puzzle 001", 100, 100)
 	    if playdate.buttonJustPressed( playdate.kButtonA ) then
 	    	game_state = "puzzle001"
 	    	playdate.graphics.clear() -- best place to do this?
 		end
-	end
 
-	if game_state == "puzzle001" then
+	elseif game_state == "puzzle001" then
+		gfx.drawText("Playdate BlackBox Puzzle 001", 5, 5)
 		if puzzle_loaded == false then
 			puzzle001 = Puzzle001a:new()
 			puzzle001:init()

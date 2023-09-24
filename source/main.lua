@@ -10,6 +10,7 @@ import "puzzle001"
 import "puzzle001a"
 import "puzzle001b"
 import "puzzle001c"
+import "puzzle002"
 
 local gfx <const> = playdate.graphics
 
@@ -28,9 +29,11 @@ function myGameSetUp()
 	end)
 
 	game_state = "title"
+	-- game_state = "puzzle002" -- quickload puzzle
+	
 	puzzle_loaded = false
 
-	puzzle_menu_active_index = 1 -- game_state "menu"
+	puzzle_menu_active_index = 1 -- for game_state "menu"
 	
 end
 
@@ -111,5 +114,21 @@ function playdate.update()
 	elseif game_state == "puzzle001c" then
 		gfx.drawText("Playdate BlackBox Puzzle 001c", 5, 5)
 		gfx.drawText("not implemented yet", 5, 50)
+
+	elseif game_state == "puzzle002" then
+		playdate.graphics.clear()
+		gfx.drawText("Playdate BlackBox Puzzle 002", 5, 5)
+
+		local crank_pos = playdate.getCrankPosition()
+		if puzzle_loaded == false then
+			puzzle002 = Puzzle002:new()
+			puzzle002:init(crank_pos)  -- ToDo: combine new() and init()
+			puzzle_loaded = true
+		else
+			if playdate.buttonJustPressed( playdate.kButtonA ) then
+				puzzle002:logic(playdate.kButtonA)
+			end
+			puzzle002:draw(crank_pos)
+		end
 	end
 end

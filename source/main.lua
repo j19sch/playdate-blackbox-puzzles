@@ -42,6 +42,7 @@ myGameSetUp()
 
 
 function playdate.update()
+	-- to consider: re-use puzzle variable to load different puzzle
 
 	if game_state == "title" then
 		local title_screen = gfx.image.new("assets/images/title-screen.png")
@@ -55,7 +56,7 @@ function playdate.update()
 
 	elseif game_state == "menu" then
 		playdate.graphics.clear()
-		playdate.inputHandlers.pop()
+		playdate.inputHandlers.pop()  -- because puzzle001b uses inputHandlers
 		gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
 		puzzle_menu()
 
@@ -63,7 +64,6 @@ function playdate.update()
 		gfx.drawText("Playdate BlackBox Puzzle 001", 5, 5)
 		if puzzle_loaded == false then
 			puzzle001 = Puzzle001:new()
-			puzzle001:init()
 			puzzle001:draw()
 			puzzle_loaded = true
 		else
@@ -79,32 +79,14 @@ function playdate.update()
 			puzzle001a:draw()
 			puzzle_loaded = true
 		else
-		    if playdate.buttonJustPressed( playdate.kButtonUp ) then
-				puzzle001a:run( playdate.kButtonUp )
-			end
-			if playdate.buttonJustPressed( playdate.kButtonDown ) then
-				puzzle001a:run( playdate.kButtonDown )
-			end
-	    	if playdate.buttonJustPressed( playdate.kButtonLeft ) then
-		   		puzzle001a:run( playdate.kButtonLeft )
-			end
-			if playdate.buttonJustPressed( playdate.kButtonRight ) then
-	   			puzzle001a:run( playdate.kButtonRight )
-			end
-	    	if playdate.buttonJustPressed( playdate.kButtonA ) then
-	    		puzzle001a:run( playdate.kButtonA )
-			end
-	    	if playdate.buttonJustPressed( playdate.kButtonB ) then
-	    		puzzle001a:run( playdate.kButtonB )
-			end
+			puzzle001a:runWrapper()
 		end
 	
 	elseif game_state == "puzzle001b" then
-		-- bug: need to clear input handler after exiting puzzle
 		gfx.drawText("Playdate BlackBox Puzzle 001b", 5, 5)
 		if puzzle_loaded == false then
 			puzzle001b = Puzzle001b:new()
-			puzzle001b:init()
+			puzzle001b:addInputHandlers()
 			puzzle001b:draw()
 			puzzle_loaded = true
 		else
@@ -121,8 +103,7 @@ function playdate.update()
 
 		local crank_pos = playdate.getCrankPosition()
 		if puzzle_loaded == false then
-			puzzle002 = Puzzle002:new()
-			puzzle002:init(crank_pos)  -- ToDo: combine new() and init()
+			puzzle002 = Puzzle002:new(crank_pos)
 			puzzle_loaded = true
 		else
 			if playdate.buttonJustPressed( playdate.kButtonA ) then

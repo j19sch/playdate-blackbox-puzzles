@@ -3,8 +3,7 @@ import "../source/puzzle002"
 TestPuzzle002 = {}
 	function TestPuzzle002:testPuzzle2Toggle()
 		local crank_pos = 0
-		local puzzle = Puzzle002:new()
-		puzzle:init(crank_pos)
+		local puzzle = Puzzle002:new(crank_pos)
 
 		luaunit.assertEquals(puzzle.elements.circle.fill, true)
 		luaunit.assertEquals(puzzle.elements.toggle.flipped, false)

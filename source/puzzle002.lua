@@ -3,21 +3,18 @@ local gfx <const> = playdate.graphics
 import "circle"
 import "toggle"
 
--- split state from drawing
 
 Puzzle002 = {}
 
-function Puzzle002:new()
+function Puzzle002:new(crank_pos)
     newObj = {
+		elements = {
+			circle = Circle:new(150, 140, crank_pos / 4, true),
+			toggle = Toggle:new(300, 105, "right")
+		}
     }
     self.__index = self
     return setmetatable(newObj, self)
-end
-
-function Puzzle002:init(crank_pos)
-	self.elements = {}
-	self.elements.circle = Circle:new(150, 140, crank_pos / 4, true)
-	self.elements.toggle = Toggle:new(300, 105, "right")
 end
 
 
@@ -26,7 +23,6 @@ function Puzzle002:draw(crank_pos)
 	
 	self.elements.circle.r = crank_pos / 4
 
-	-- ToDo: check this code in other puzzles
 	for key, val in pairs(self.elements) do
 		val:draw()
 	end

@@ -31,7 +31,7 @@ end
 
 function Puzzle001a:draw()
 	for key, val in pairs(self.elements) do
-		val.image:draw(val.x, val.y)
+		val:draw(val.x, val.y)
 	end
 end
 
@@ -64,4 +64,25 @@ end
 function Puzzle001a:run(btn_just_pressed)
 	self:logic(btn_just_pressed)
 	self:draw()
+end
+
+function Puzzle001a:runWrapper()
+    if playdate.buttonJustPressed( playdate.kButtonUp ) then
+		puzzle001a:run( playdate.kButtonUp )
+	end
+	if playdate.buttonJustPressed( playdate.kButtonDown ) then
+		puzzle001a:run( playdate.kButtonDown )
+	end
+	if playdate.buttonJustPressed( playdate.kButtonLeft ) then
+   		puzzle001a:run( playdate.kButtonLeft )
+	end
+	if playdate.buttonJustPressed( playdate.kButtonRight ) then
+			puzzle001a:run( playdate.kButtonRight )
+	end
+	if playdate.buttonJustPressed( playdate.kButtonA ) then
+		puzzle001a:run( playdate.kButtonA )
+	end
+	if playdate.buttonJustPressed( playdate.kButtonB ) then
+		puzzle001a:run( playdate.kButtonB )
+	end
 end

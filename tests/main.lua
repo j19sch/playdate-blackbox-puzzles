@@ -7,6 +7,7 @@ import 'test_puzzle001'
 import 'test_puzzle001a'
 import 'test_puzzle001b'
 import 'test_puzzle001c'
+import 'test_puzzle002'
 
 
 -- turns off updating

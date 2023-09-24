@@ -29,6 +29,8 @@ function myGameSetUp()
 		game_state = "menu"
 		puzzle_loaded = false
 	end)
+
+	puzzle_menu_active_index = 1
 	
 end
 
@@ -50,10 +52,48 @@ function playdate.update()
 	elseif game_state == "menu" then
 		playdate.graphics.clear()
 		gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
-		gfx.drawText("Press A to start Puzzle 001", 100, 100)
-	    if playdate.buttonJustPressed( playdate.kButtonA ) then
-	    	game_state = "puzzle001"
-	    	playdate.graphics.clear() -- best place to do this?
+
+		-- gfx.drawText("Press A to start Puzzle 001", 100, 100)
+	    -- if playdate.buttonJustPressed( playdate.kButtonA ) then
+	    -- 	game_state = "puzzle001"
+	    -- 	playdate.graphics.clear() -- best place to do this?
+		-- end
+
+		-- local menu = { 'puzzle001', 'puzzle001a', 'puzzle001b', 'puzzle001c'}
+
+		local menu = {
+			"puzzle001",
+			"puzzle001a",
+			"puzzle001b",
+			"puzzle001c",
+		}
+
+		local start_x = 15
+		local start_y = 50
+
+		for index, val in ipairs(menu) do
+			if index == puzzle_menu_active_index then
+	  			gfx.drawText('x', start_x, start_y)
+  			end
+  			gfx.drawText(val, start_x + 15, start_y)
+  			start_y += 25
+		end
+
+	    if playdate.buttonJustPressed( playdate.kButtonUp ) then
+			puzzle_menu_active_index -= 1
+			if puzzle_menu_active_index <= 0 then
+				puzzle_menu_active_index = #menu
+			end
+		end
+		if playdate.buttonJustPressed( playdate.kButtonDown ) then
+			puzzle_menu_active_index += 1
+			if puzzle_menu_active_index > #menu then
+				puzzle_menu_active_index = 1
+			end
+		end
+    	if playdate.buttonJustPressed( playdate.kButtonA ) then
+    		game_state = menu[puzzle_menu_active_index]
+			playdate.graphics.clear()
 		end
 
 	elseif game_state == "puzzle001" then

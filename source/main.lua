@@ -22,7 +22,7 @@ function myGameSetUp()
 
 	local menu = playdate.getSystemMenu()
 
-	local menuItem, error = menu:addMenuItem("to menu", function()
+	local menuItem, error = menu:addMenuItem("pick puzzle", function()
     	print("menu: going back to the menu")
 		game_state = "menu"
 		puzzle_loaded = false

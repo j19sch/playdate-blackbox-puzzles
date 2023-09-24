@@ -4,6 +4,8 @@ import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
 
+import "menu"
+
 import "puzzle001"
 import "puzzle001a"
 import "puzzle001b"
@@ -17,11 +19,6 @@ local gfx <const> = playdate.graphics
 function myGameSetUp()
 	gfx.setBackgroundColor(gfx.kColorWhite)
 
-	-- gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
-
-	game_state = "title"
-	puzzle_loaded = false
-
 	local menu = playdate.getSystemMenu()
 
 	local menuItem, error = menu:addMenuItem("to menu", function()
@@ -30,9 +27,13 @@ function myGameSetUp()
 		puzzle_loaded = false
 	end)
 
-	puzzle_menu_active_index = 1
+	game_state = "title"
+	puzzle_loaded = false
+
+	puzzle_menu_active_index = 1 -- game_state "menu"
 	
 end
+
 
 myGameSetUp()
 
@@ -51,78 +52,64 @@ function playdate.update()
 
 	elseif game_state == "menu" then
 		playdate.graphics.clear()
+		playdate.inputHandlers.pop()
 		gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
-
-		-- gfx.drawText("Press A to start Puzzle 001", 100, 100)
-	    -- if playdate.buttonJustPressed( playdate.kButtonA ) then
-	    -- 	game_state = "puzzle001"
-	    -- 	playdate.graphics.clear() -- best place to do this?
-		-- end
-
-		-- local menu = { 'puzzle001', 'puzzle001a', 'puzzle001b', 'puzzle001c'}
-
-		local menu = {
-			"puzzle001",
-			"puzzle001a",
-			"puzzle001b",
-			"puzzle001c",
-		}
-
-		local start_x = 15
-		local start_y = 50
-
-		for index, val in ipairs(menu) do
-			if index == puzzle_menu_active_index then
-	  			gfx.drawText('x', start_x, start_y)
-  			end
-  			gfx.drawText(val, start_x + 15, start_y)
-  			start_y += 25
-		end
-
-	    if playdate.buttonJustPressed( playdate.kButtonUp ) then
-			puzzle_menu_active_index -= 1
-			if puzzle_menu_active_index <= 0 then
-				puzzle_menu_active_index = #menu
-			end
-		end
-		if playdate.buttonJustPressed( playdate.kButtonDown ) then
-			puzzle_menu_active_index += 1
-			if puzzle_menu_active_index > #menu then
-				puzzle_menu_active_index = 1
-			end
-		end
-    	if playdate.buttonJustPressed( playdate.kButtonA ) then
-    		game_state = menu[puzzle_menu_active_index]
-			playdate.graphics.clear()
-		end
+		puzzle_menu()
 
 	elseif game_state == "puzzle001" then
 		gfx.drawText("Playdate BlackBox Puzzle 001", 5, 5)
 		if puzzle_loaded == false then
-			puzzle001 = Puzzle001a:new()
+			puzzle001 = Puzzle001:new()
 			puzzle001:init()
 			puzzle001:draw()
 			puzzle_loaded = true
 		else
+		    puzzle001:run()
+		    puzzle001:draw()
+		end
+
+	elseif game_state == "puzzle001a" then
+		gfx.drawText("Playdate BlackBox Puzzle 001a", 5, 5)
+		if puzzle_loaded == false then
+			puzzle001a = Puzzle001a:new()
+			puzzle001a:init()
+			puzzle001a:draw()
+			puzzle_loaded = true
+		else
 		    if playdate.buttonJustPressed( playdate.kButtonUp ) then
-				puzzle001:run( playdate.kButtonUp )
+				puzzle001a:run( playdate.kButtonUp )
 			end
 			if playdate.buttonJustPressed( playdate.kButtonDown ) then
-				puzzle001:run( playdate.kButtonDown )
+				puzzle001a:run( playdate.kButtonDown )
 			end
 	    	if playdate.buttonJustPressed( playdate.kButtonLeft ) then
-		   		puzzle001:run( playdate.kButtonLeft )
+		   		puzzle001a:run( playdate.kButtonLeft )
 			end
 			if playdate.buttonJustPressed( playdate.kButtonRight ) then
-	   			puzzle001:run( playdate.kButtonRight )
+	   			puzzle001a:run( playdate.kButtonRight )
 			end
 	    	if playdate.buttonJustPressed( playdate.kButtonA ) then
-	    		puzzle001:run( playdate.kButtonA )
+	    		puzzle001a:run( playdate.kButtonA )
 			end
 	    	if playdate.buttonJustPressed( playdate.kButtonB ) then
-	    		puzzle001:run( playdate.kButtonB )
+	    		puzzle001a:run( playdate.kButtonB )
 			end
 		end
+	
+	elseif game_state == "puzzle001b" then
+		-- bug: need to clear input handler after exiting puzzle
+		gfx.drawText("Playdate BlackBox Puzzle 001b", 5, 5)
+		if puzzle_loaded == false then
+			puzzle001b = Puzzle001b:new()
+			puzzle001b:init()
+			puzzle001b:draw()
+			puzzle_loaded = true
+		else
+		    puzzle001b:draw()
+		end
+	
+	elseif game_state == "puzzle001c" then
+		gfx.drawText("Playdate BlackBox Puzzle 001c", 5, 5)
+		gfx.drawText("not implemented yet", 5, 50)
 	end
-
 end

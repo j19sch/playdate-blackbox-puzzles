@@ -33,31 +33,31 @@ function Puzzle001:draw()
 	end
 end
 
-function Puzzle001:run2(btn_just_pressed)
-	if self.elements.toggle_vert.flipped == true then
-	    if btn_just_pressed == playdate.kButtonUp then
-    		self.elements.button_top:toggle_and_draw()
-    	end
-    	if btn_just_pressed == playdate.kButtonDown then
-    		self.elements.button_bottom:toggle_and_draw()
-    	end
-	else
-	    if btn_just_pressed == playdate.kButtonLeft then
-		   	self.elements.button_left:toggle_and_draw()
-    	end
-    	if btn_just_pressed == playdate.kButtonRight then
-	   		self.elements.button_right:toggle_and_draw()
-		end
-	end
+-- function Puzzle001:run2(btn_just_pressed)
+-- 	if self.elements.toggle_vert.flipped == true then
+-- 	    if btn_just_pressed == playdate.kButtonUp then
+--     		self.elements.button_top:toggle_and_draw()
+--     	end
+--     	if btn_just_pressed == playdate.kButtonDown then
+--     		self.elements.button_bottom:toggle_and_draw()
+--     	end
+-- 	else
+-- 	    if btn_just_pressed == playdate.kButtonLeft then
+-- 		   	self.elements.button_left:toggle_and_draw()
+--     	end
+--     	if btn_just_pressed == playdate.kButtonRight then
+-- 	   		self.elements.button_right:toggle_and_draw()
+-- 		end
+-- 	end
 
-    if btn_just_pressed == playdate.kButtonA then
-    	self.elements.toggle_vert:flip_and_draw()
-	end
+--     if btn_just_pressed == playdate.kButtonA then
+--     	self.elements.toggle_vert:flip_and_draw()
+-- 	end
 
-    if btn_just_pressed == playdate.kButtonB then
-    	self.elements.toggle_hor:flip_and_draw()
-	end
-end
+--     if btn_just_pressed == playdate.kButtonB then
+--     	self.elements.toggle_hor:flip_and_draw()
+-- 	end
+-- end
 
 
 function Puzzle001:run()

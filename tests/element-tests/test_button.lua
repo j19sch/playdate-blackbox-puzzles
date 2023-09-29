@@ -1,4 +1,4 @@
-import '../source/button'
+import '../source/elements/button'
 
 TestButton = {}
 

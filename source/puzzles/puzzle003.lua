@@ -1,7 +1,7 @@
 local gfx <const> = playdate.graphics
 
-import "circle"
-import "toggle"
+import "../elements/circle"
+import "../elements/toggle"
 
 
 Puzzle003 = {}

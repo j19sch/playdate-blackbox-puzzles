@@ -1,4 +1,4 @@
-import "../source/toggle"
+import "../source/elements/toggle"
 
 TestToggle = {}
 

@@ -1,7 +1,7 @@
 local gfx <const> = playdate.graphics
 
-import "button"
-import "toggle"
+import "../elements/button"
+import "../elements/toggle"
 
 -- separate logic completely from button presses,
 -- by making elements responsible for their logic

@@ -6,13 +6,13 @@ import "CoreLibs/timer"
 
 import "menu"
 
-import "puzzle001"
-import "puzzle001a"
-import "puzzle001b"
-import "puzzle001c"
-import "puzzle001d"
-import "puzzle002"
-import "puzzle003"
+import "puzzles/puzzle001"
+import "puzzles/puzzle001a"
+import "puzzles/puzzle001b"
+import "puzzles/puzzle001c"
+import "puzzles/puzzle001d"
+import "puzzles/puzzle002"
+import "puzzles/puzzle003"
 
 local gfx <const> = playdate.graphics
 
@@ -117,6 +117,7 @@ function playdate.update()
 			puzzle002 = Puzzle002:new(crank_pos)
 			puzzle_loaded = true
 		else
+			-- ToDo: deal with button press and crank position in run() method
 			if playdate.buttonJustPressed( playdate.kButtonA ) then
 				puzzle002:logic(playdate.kButtonA)
 			end

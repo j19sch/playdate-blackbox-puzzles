@@ -1,4 +1,4 @@
-import "../source/puzzle001a"
+import "../source/puzzles/puzzle001a"
 
 TestPuzzle001a = {}
 

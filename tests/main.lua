@@ -1,15 +1,16 @@
 import 'luaunit/playdate_luaunit_fix'
 import 'luaunit/luaunit'
 
-import 'test_button'
-import 'test_toggle'
-import 'test_puzzle001'
-import 'test_puzzle001a'
-import 'test_puzzle001b'
-import 'test_puzzle001c'
-import 'test_puzzle001d'
-import 'test_puzzle002'
-import 'test_puzzle003'
+import 'element-tests/test_button'
+import 'element-tests/test_toggle'
+
+import 'puzzle-tests/test_puzzle001'
+import 'puzzle-tests/test_puzzle001a'
+import 'puzzle-tests/test_puzzle001b'
+import 'puzzle-tests/test_puzzle001c'
+import 'puzzle-tests/test_puzzle001d'
+import 'puzzle-tests/test_puzzle002'
+import 'puzzle-tests/test_puzzle003'
 
 
 -- turns off updating

@@ -1,4 +1,4 @@
-import "../source/puzzle001b"
+import "../source/puzzles/puzzle001b"
 
 -- ToDo
 -- cool: input handler per state

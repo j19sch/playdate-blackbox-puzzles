@@ -1,7 +1,7 @@
 local gfx <const> = playdate.graphics
 
-import "button"
-import "toggle"
+import "../elements/button"
+import "../elements/toggle"
 
 -- use bitmasks returned by playdate.getButtonState()
 -- bitmasks

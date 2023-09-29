@@ -15,17 +15,14 @@ function Puzzle001a:new()
 end
 
 function Puzzle001a:init()
-	self.elements = {}
-	self.elements.button_top = Button:new(80, 40, false)
-
-	self.elements.button_left = Button:new(15, 72, false)
-
-	self.elements.button_bottom = Button:new(80, 105, false)
-
-	self.elements.button_right = Button:new(145, 72, false)
-
-	self.elements.toggle_vert = Toggle:new(300, 40, "up")
-	self.elements.toggle_hor = Toggle:new(300, 105, "right")
+	self.elements = {
+			button_top = Button:new(80, 60, false),
+			button_left = Button:new(15, 92, false),
+			button_bottom = Button:new(80, 125, false),
+			button_right = Button:new(145, 92, false),
+			toggle_vert = Toggle:new(320, 92, "up"),
+			toggle_hor = Toggle:new(240, 91, "right")
+	}
 end
 
 

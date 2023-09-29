@@ -6,6 +6,7 @@ function puzzle_menu()
 		"puzzle001a",
 		"puzzle001b",
 		"puzzle001c",
+		"puzzle001d",
 		"puzzle002"
 	}
 

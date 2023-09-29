@@ -7,6 +7,7 @@ import 'test_puzzle001'
 import 'test_puzzle001a'
 import 'test_puzzle001b'
 import 'test_puzzle001c'
+import 'test_puzzle001d'
 import 'test_puzzle002'
 
 
@@ -19,7 +20,10 @@ luaunit.PRINT_TABLE_REF_IN_ERROR_MSG = true
 -- process the command line args (if any)
 local testOutputFilename = "test_output"
 local outputType = "text"
-local luaunit_args = {'--output', 'text', '--verbose', '-r'}
+local luaunit_args = {'--output', 'text', '--verbose'}
+-- luaunit_args notes
+-- --output: text or tap
+-- removed -r because no value
 
 -- run the tests
 local returnValue = luaunit.LuaUnit.run(table.unpack(luaunit_args))

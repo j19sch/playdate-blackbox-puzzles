@@ -10,6 +10,7 @@ import "puzzle001"
 import "puzzle001a"
 import "puzzle001b"
 import "puzzle001c"
+import "puzzle001d"
 import "puzzle002"
 
 local gfx <const> = playdate.graphics
@@ -95,6 +96,16 @@ function playdate.update()
 	elseif game_state == "puzzle001c" then
 		gfx.drawText("Playdate BlackBox Puzzle 001c", 5, 5)
 		gfx.drawText("not implemented yet", 5, 50)
+
+	elseif game_state == "puzzle001d" then
+		gfx.drawText("Playdate BlackBox Puzzle 001d", 5, 5)
+		if puzzle_loaded == false then
+			puzzle001d = Puzzle001d:new()
+			puzzle001d:draw()
+			puzzle_loaded = true
+		else
+			puzzle001d:run()
+		end
 
 	elseif game_state == "puzzle002" then
 		playdate.graphics.clear()

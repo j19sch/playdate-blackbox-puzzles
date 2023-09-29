@@ -67,19 +67,18 @@ function playdate.update()
 			puzzle001:draw()
 			puzzle_loaded = true
 		else
-		    puzzle001:run()
-		    puzzle001:draw()
+			puzzle001:runWrapper()
 		end
 
 	elseif game_state == "puzzle001a" then
 		gfx.drawText("Playdate BlackBox Puzzle 001a", 5, 5)
 		if puzzle_loaded == false then
 			puzzle001a = Puzzle001a:new()
-			puzzle001a:init()
 			puzzle001a:draw()
 			puzzle_loaded = true
 		else
-			puzzle001a:runWrapper()
+		    puzzle001a:run()
+		    puzzle001a:draw()
 		end
 	
 	elseif game_state == "puzzle001b" then

@@ -12,6 +12,7 @@ import "puzzle001b"
 import "puzzle001c"
 import "puzzle001d"
 import "puzzle002"
+import "puzzle003"
 
 local gfx <const> = playdate.graphics
 
@@ -120,6 +121,16 @@ function playdate.update()
 				puzzle002:logic(playdate.kButtonA)
 			end
 			puzzle002:draw(crank_pos)
+		end
+
+	elseif game_state == "puzzle003" then
+		gfx.drawText("Playdate BlackBox Puzzle 003", 5, 5)
+		if puzzle_loaded == false then
+			puzzle003 = Puzzle003:new()
+			puzzle003:draw()
+			puzzle_loaded = true
+		else
+			puzzle003:run()
 		end
 	end
 end

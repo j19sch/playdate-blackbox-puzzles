@@ -7,7 +7,8 @@ function puzzle_menu()
 		"puzzle001b",
 		"puzzle001c",
 		"puzzle001d",
-		"puzzle002"
+		"puzzle002",
+		"puzzle003",
 	}
 
 	local start_x = 15

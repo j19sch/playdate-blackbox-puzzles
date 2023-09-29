@@ -9,6 +9,7 @@ import 'test_puzzle001b'
 import 'test_puzzle001c'
 import 'test_puzzle001d'
 import 'test_puzzle002'
+import 'test_puzzle003'
 
 
 -- turns off updating

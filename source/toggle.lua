@@ -14,7 +14,7 @@ function Toggle:new(x_pos, y_pos, start_state)
         left = "toggle-left.png"
     }
     local img = gfx.image.new("assets/images/" .. image_table[start_state])
-    assert(img, "could not load image for tottle")
+    assert(img, "could not load image for toggle")
     newObj = {
         x = x_pos,
         y = y_pos,

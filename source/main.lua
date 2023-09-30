@@ -132,6 +132,10 @@ function playdate.update()
 			puzzle:run()
 		end
 
+	elseif game_state == "puzzle001e" then
+		gfx.drawText("Playdate BlackBox Puzzle 001e", 5, 5)
+		gfx.drawText("not implemented yet", 5, 50)
+
 	elseif game_state == "puzzle002" then
 		playdate.graphics.clear()
 		gfx.drawText("Playdate BlackBox Puzzle 002", 5, 5)

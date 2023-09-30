@@ -51,6 +51,7 @@ function puzzles001_menu()
 		"puzzle001b",
 		"puzzle001c",
 		"puzzle001d",
+		"puzzle001e",
 	}
 
 	local start_x = 15

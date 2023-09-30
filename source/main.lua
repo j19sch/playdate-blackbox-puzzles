@@ -25,22 +25,35 @@ function myGameSetUp()
 	local menu = playdate.getSystemMenu()
 
 	local menuItem, error = menu:addMenuItem("pick puzzle", function()
-    	print("menu: going back to the menu")
 		game_state = "menu"
 		puzzle_loaded = false
 	end)
 
+	local menuItem, error = menu:addMenuItem("puzzle001s", function()
+		game_state = "puzzles001_menu"
+		puzzle_loaded = false
+	end)
+
+	local menuItem, error = menu:addMenuItem("about", function()
+		game_state = "about"
+		puzzle_loaded = false
+	end)
+
 	game_state = "title"
-	-- game_state = "puzzle002" -- quickload puzzle
+	-- game_state = "puzzle002" -- quickload puzzle for dev purposes
 	
 	puzzle_loaded = false
 
 	puzzle_menu_active_index = 1 -- for game_state "menu"
+	puzzles001_menu_active_index = 1 -- for game_state "puzzles001_menu"
 	
 end
 
 
 myGameSetUp()
+
+
+-- ToDo: add function to change game state, clear screen and pop input handlers
 
 
 function playdate.update()
@@ -59,8 +72,17 @@ function playdate.update()
 	elseif game_state == "menu" then
 		playdate.graphics.clear()
 		playdate.inputHandlers.pop()  -- because puzzle001b uses inputHandlers
-		gfx.drawText("Playdate BlackBox Puzzles", 5, 5)
 		puzzle_menu()
+
+	elseif game_state == "puzzles001_menu" then
+		playdate.graphics.clear()
+		playdate.inputHandlers.pop()  -- because puzzle001b uses inputHandlers
+		puzzles001_menu()
+
+	elseif game_state == "about" then
+		playdate.graphics.clear()
+		playdate.inputHandlers.pop()  -- because puzzle001b uses inputHandlers
+		about()
 
 	elseif game_state == "puzzle001" then
 		gfx.drawText("Playdate BlackBox Puzzle 001", 5, 5)
@@ -126,6 +148,9 @@ function playdate.update()
 
 	elseif game_state == "puzzle003" then
 		gfx.drawText("Playdate BlackBox Puzzle 003", 5, 5)
+		-- ToDo: screen title flickers when running puzzle
+		-- probably because of the playdate.graphics.clear() on if crank changed
+		-- gfx.drawText('xyz', 15, 35) in draw() does not do tihs
 		if puzzle_loaded == false then
 			puzzle003 = Puzzle003:new()
 			puzzle003:draw()

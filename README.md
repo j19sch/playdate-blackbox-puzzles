@@ -28,7 +28,8 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 ---
 
 ## ToDos
-- add https://github.com/mpeterv/luacheck, see branch
+- add https://github.com/lunarmodules/luacheck
+- also see https://devforum.play.date/t/playdate-sdk-support-for-luacheck/6887
 
 ---
 

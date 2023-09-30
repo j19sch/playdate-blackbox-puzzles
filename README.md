@@ -25,11 +25,11 @@ Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-product
 - ToDo: figure out how to get fonts and images into `tests`
 - Makefile: `cp` with `-u` (update, UPDATE={all,none,older(default)} ) or `-n` (no-clobber, i.e. no overwrites)
 
----
-
-## ToDos
-- add https://github.com/lunarmodules/luacheck
-- also see https://devforum.play.date/t/playdate-sdk-support-for-luacheck/6887
+## linting
+- `make lint` runs `luacheck` on `./source`
+- does require `luacheck` dev version for now: `luarocks install --server=https://luarocks.org/dev luacheck dev-1`
+- https://github.com/lunarmodules/luacheck
+- https://devforum.play.date/t/playdate-sdk-support-for-luacheck/6887
 
 ---
 

@@ -14,7 +14,7 @@ function puzzle_menu()
 
 	for index, val in ipairs(menu) do
 		if index == puzzle_menu_active_index then
-  			gfx.drawText('x', start_x, start_y)
+			gfx.drawText('x', start_x, start_y)
 			end
 			gfx.drawText(val, start_x + 15, start_y)
 			start_y += 25  -- ToDo: will fall outside of screen with more puzzles
@@ -44,7 +44,7 @@ function puzzles001_menu()
 	-- To consider: change this to an option in the menu,
 	-- so the menu can have a return to title.
 	-- Or return to title instead of return to menu.
-	
+
 	local menu = {
 		"puzzle001",
 		"puzzle001a",
@@ -58,10 +58,10 @@ function puzzles001_menu()
 
 	for index, val in ipairs(menu) do
 		if index == puzzles001_menu_active_index then
-  			gfx.drawText('x', start_x, start_y)
-			end
-			gfx.drawText(val, start_x + 15, start_y)
-			start_y += 25  -- ToDo: will fall outside of screen with more puzzles
+			gfx.drawText('x', start_x, start_y)
+		end
+		gfx.drawText(val, start_x + 15, start_y)
+		start_y += 25  -- ToDo: will fall outside of screen with more puzzles
 	end
 
     if playdate.buttonJustPressed( playdate.kButtonUp ) then

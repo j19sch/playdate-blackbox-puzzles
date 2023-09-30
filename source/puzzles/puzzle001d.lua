@@ -1,5 +1,3 @@
-local gfx <const> = playdate.graphics
-
 import "../elements/button"
 import "../elements/toggle"
 
@@ -9,8 +7,8 @@ import "../elements/toggle"
 Puzzle001d = {}
 
 function Puzzle001d:new()
-    newObj = {
-    	elements = {
+    local newObj = {
+		elements = {
 			button_top = Button:new(80, 60, false),
 			button_left = Button:new(15, 92, false),
 			button_bottom = Button:new(80, 125, false),
@@ -25,7 +23,7 @@ end
 
 
 function Puzzle001d:draw()
-	for key, val in pairs(self.elements) do
+	for _, val in pairs(self.elements) do
 		val:draw(val.x, val.y)
 	end
 end
@@ -75,7 +73,7 @@ function Puzzle001d:run()
 		self:toggle_button_bottom()
 	end
 	if playdate.buttonJustPressed( playdate.kButtonLeft ) then
-   		self:toggle_button_left()
+		self:toggle_button_left()
 	end
 	if playdate.buttonJustPressed( playdate.kButtonRight ) then
 		self:toggle_button_right()

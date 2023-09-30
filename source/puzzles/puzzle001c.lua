@@ -1,5 +1,3 @@
-local gfx <const> = playdate.graphics
-
 import "../elements/button"
 import "../elements/toggle"
 
@@ -39,7 +37,7 @@ import "../elements/toggle"
 -- The default is 30 fps, which is a recommended figure that balances animation
 -- smoothness with performance and power considerations. Maximum is 50 fps.
 
--- If rate is 0, playdate.update() is called as soon as a frame buffer is available. 
+-- If rate is 0, playdate.update() is called as soon as a frame buffer is available.
 -- Since the display refreshes line-by-line, and unchanged lines aren’t sent to the
 -- display, the update cycle will be faster than 30 times a second but at an
 -- indeterminate rate. playdate.getCurrentTimeMilliseconds() should then be used as
@@ -48,7 +46,7 @@ import "../elements/toggle"
 Puzzle001c = {}
 
 function Puzzle001c:new()
-    newObj = {
+    local newObj = {
     }
     self.__index = self
     return setmetatable(newObj, self)

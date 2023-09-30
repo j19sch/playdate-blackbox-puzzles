@@ -19,11 +19,11 @@ function Button:new(x_pos, y_pos, pressed)
     end
     assert(img, "failed to load image for button element")
 
-    newObj = {
+    local newObj = {
         x = x_pos,
         y = y_pos,
         pressed = pressed,
-        image = img 
+        image = img
     }
     self.__index = self
     return setmetatable(newObj, self)

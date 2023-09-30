@@ -3,7 +3,7 @@ local gfx <const> = playdate.graphics
 Circle = {}
 
 function Circle:new(x_pos, y_pos, radius, filled)
-    newObj = {
+    local newObj = {
         x = x_pos,
         y = y_pos,
         r = radius,

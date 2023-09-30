@@ -1,5 +1,3 @@
-local gfx <const> = playdate.graphics
-
 import "../elements/button"
 import "../elements/toggle"
 
@@ -8,17 +6,17 @@ import "../elements/toggle"
 Puzzle001b = {}
 
 function Puzzle001b:new()
-    newObj = {
-    	elements = {
+    local newObj = {
+		elements = {
 			button_top = Button:new(80, 60, false),
 			button_left = Button:new(15, 92, false),
 			button_bottom = Button:new(80, 125, false),
 			button_right = Button:new(145, 92, false),
 			toggle_vert = Toggle:new(320, 92, "up"),
 			toggle_hor = Toggle:new(240, 91, "right")
-    	}
+		}
     }
-    self.__index = self
+	self.__index = self
     return setmetatable(newObj, self)
 end
 
@@ -70,7 +68,7 @@ function Puzzle001b:addInputHandlers()
 end
 
 function Puzzle001b:draw()
-	for key, val in pairs(self.elements) do
+	for _, val in pairs(self.elements) do
 		val:draw(val.x, val.y)
 	end
 end

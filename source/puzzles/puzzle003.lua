@@ -7,7 +7,7 @@ import "../elements/toggle"
 Puzzle003 = {}
 
 function Puzzle003:new()
-    newObj = {
+    local newObj = {
 		elements = {
 			circle = Circle:new(150, 140, 10, true),
 			toggle = Toggle:new(300, 105, "right")
@@ -20,8 +20,8 @@ end
 
 function Puzzle003:draw()
 	gfx.drawText('xyz', 15, 35)
-	
-	for key, val in pairs(self.elements) do
+
+	for _, val in pairs(self.elements) do
 		val:draw()
 	end
 end

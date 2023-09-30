@@ -33,7 +33,7 @@ function TestPuzzle001:testPuzzle1aToggleIsOff()
 
 	puzzle001:logic(playdate.kButtonDown)
 	luaunit.assertEquals(puzzle001.elements.button_bottom.pressed, false)
-	
+
 end
 
 function TestPuzzle001:testPuzzle1aToggleIsOn()

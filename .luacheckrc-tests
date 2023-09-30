@@ -1,0 +1,47 @@
+-- alternative: per path overrides
+-- https://luacheck.readthedocs.io/en/stable/config.html#per-file-and-per-path-overrides
+
+
+stds.tests = {
+   globals = {
+      "luaunit",
+      "TestButton",
+      "TestCircle",
+      "TestToggle",
+      "TestPuzzle001",
+      "TestPuzzle002",
+      "TestPuzzle003",
+      "TestPuzzle001a",
+      "TestPuzzle001b",
+      "TestPuzzle001c",
+      "TestPuzzle001d",
+      "TestPuzzle001e",
+   }
+}
+
+stds.elements = {
+   globals = {
+      "Button",
+      "Circle",
+      "Toggle",
+      }
+}
+
+stds.puzzles = {
+   globals = {
+      "puzzle",
+      "Puzzle001",
+      "Puzzle001a",
+      "Puzzle001b",
+      "Puzzle001c",
+      "Puzzle001d",
+      "Puzzle001e",
+      "Puzzle002",
+      "Puzzle003",
+   }
+}
+
+std = "lua54+playdate+tests+elements+puzzles"
+operators = {"+=", "-=", "*=", "/="}
+exclude_files = {"./tests/luaunit/*"}
+self = false

@@ -20,8 +20,8 @@ playdate.stop()
 luaunit.PRINT_TABLE_REF_IN_ERROR_MSG = true
 
 -- process the command line args (if any)
-local testOutputFilename = "test_output"
-local outputType = "text"
+-- local testOutputFilename = "test_output"
+-- local outputType = "text"
 local luaunit_args = {'--output', 'text', '--verbose'}
 -- luaunit_args notes
 -- --output: text or tap

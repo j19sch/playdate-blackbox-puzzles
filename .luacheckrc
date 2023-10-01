@@ -33,5 +33,28 @@ stds.main_etc = {
    }
 }
 
+stds.tests = {
+   globals = {
+      "luaunit",
+      "TestButton",
+      "TestCircle",
+      "TestToggle",
+      "TestPuzzle001",
+      "TestPuzzle002",
+      "TestPuzzle003",
+      "TestPuzzle001a",
+      "TestPuzzle001b",
+      "TestPuzzle001c",
+      "TestPuzzle001d",
+      "TestPuzzle001e",
+   }
+}
+
 std = "lua54+playdate+elements+puzzles+main_etc"
 operators = {"+=", "-=", "*=", "/="}
+
+files["tests/**"] = {
+   exclude_files = {"tests/luaunit/*"},  -- does not work, so done in Makefile
+   std = std .. "+tests",
+   self = false,
+}

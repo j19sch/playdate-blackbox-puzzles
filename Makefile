@@ -9,7 +9,7 @@ lint:
 	luacheck ./source
 
 lint-tests:
-	luacheck --config .luacheckrc-tests ./tests
+	luacheck ./tests --exclude-files tests/luaunit/*
 
 clean-test-assets:
 	rm -R tests/assets

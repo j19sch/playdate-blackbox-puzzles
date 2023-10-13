@@ -153,13 +153,8 @@ function playdate.update()
 		end
 
 	elseif game_state == "puzzle003" then
-		gfx.drawText("Playdate BlackBox Puzzle 003", 5, 5)
-		-- ToDo: screen title flickers when running puzzle
-		-- probably because of the playdate.graphics.clear() on if crank changed
-		-- gfx.drawText('xyz', 15, 35) in draw() does not do tihs
 		if puzzle_loaded == false then
 			puzzle = Puzzle003:new()
-			puzzle:draw()
 			puzzle_loaded = true
 		else
 			puzzle:run()

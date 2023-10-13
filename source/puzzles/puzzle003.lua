@@ -18,41 +18,52 @@ function Puzzle003:new()
 end
 
 
-function Puzzle003:draw()
-	gfx.drawText('xyz', 15, 35)
+function Puzzle003:draw(is_crank_docked, latest_crank_change)
+	-- Suboptimal code to preserve the bug where the puzzle title
+	-- disappears when you rotate the crank.
+	if is_crank_docked == true then
+		playdate.graphics.clear()
+		gfx.drawText("Playdate BlackBox Puzzle 003", 5, 5)
+		gfx.drawText(tostring(latest_crank_change), 15, 35)
+	elseif is_crank_docked == false and latest_crank_change ~= 0 then
+		playdate.graphics.clear()
+		gfx.drawText(tostring(latest_crank_change), 15, 35)
+	elseif is_crank_docked == false and latest_crank_change == 0 then
+		gfx.drawText("Playdate BlackBox Puzzle 003", 5, 5)
+	end
+
 
 	for _, val in pairs(self.elements) do
 		val:draw()
 	end
 end
 
-function Puzzle003:logic()
-	if playdate.isCrankDocked() == true and self.elements.toggle.flipped == true then
-		self.elements.toggle:flip()
-	elseif playdate.isCrankDocked() == false and self.elements.toggle.flipped == false then
-		self.elements.toggle:flip()
-		-- ToDo
-		-- self.elements.circle.fill = true
-		-- self.elements.circle.r = 10
-	end
+function Puzzle003:logic(is_crank_docked, latest_crank_change)
+	-- This puzzle works differently in the simulator, since there you can click
+	-- a crank position, instead of having to rotate the crank.
 
-	-- ToDo: simulator lets you click => one change; on the device a crank registers as multiple sequential values
-	-- filter on acceleratedChange??
-	-- also top value is like 38
-	local crank_change, _ = playdate.getCrankChange()
-	print('crank change: ' .. crank_change)
-	print('abs crank change: ' .. math.abs(crank_change))
-	self.elements.circle.r = math.abs(crank_change)
-	if crank_change > 0 then
-		self.elements.circle.fill = true
-		playdate.graphics.clear()  -- only when change in value
-	elseif crank_change < 0 then
-		self.elements.circle.fill = false
-		playdate.graphics.clear()  -- only when change in value
+	if is_crank_docked == true then
+		self.elements.circle.r = 10
+		if self.elements.toggle.flipped == true then
+			self.elements.toggle:flip()
+		end
+	else
+		if self.elements.toggle.flipped == false then
+			self.elements.toggle:flip()
+		end
+		self.elements.circle.r = math.abs(latest_crank_change)
+		if latest_crank_change > 0 then
+			self.elements.circle.fill = true
+		elseif latest_crank_change < 0 then
+			self.elements.circle.fill = false
+		end
 	end
 end
 
 function Puzzle003:run()
-	self:logic()
-	self:draw()
+	local crank_docked = playdate.isCrankDocked()
+	local crank_change = playdate.getCrankChange()
+
+	self:logic(crank_docked, crank_change)
+	self:draw(crank_docked, crank_change)
 end

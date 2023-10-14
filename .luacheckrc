@@ -17,6 +17,7 @@ stds.puzzles = {
       "Puzzle001e",
       "Puzzle002",
       "Puzzle003",
+      "Puzzle004",
    }
 }
 

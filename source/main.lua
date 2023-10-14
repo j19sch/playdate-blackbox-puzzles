@@ -13,6 +13,7 @@ import "puzzles/puzzle001c"
 import "puzzles/puzzle001d"
 import "puzzles/puzzle002"
 import "puzzles/puzzle003"
+import "puzzles/puzzle004"
 
 local gfx <const> = playdate.graphics
 
@@ -159,5 +160,14 @@ function playdate.update()
 		else
 			puzzle:run()
 		end
+
+	elseif game_state == "puzzle004" then
+		if puzzle_loaded == false then
+			puzzle = Puzzle004:new()
+			puzzle_loaded = true
+		else
+			puzzle:run()
+		end
+
 	end
 end

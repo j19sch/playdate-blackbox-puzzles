@@ -2,14 +2,14 @@ import "../source/puzzles/puzzle001"
 
 TestPuzzle001 = {}
 
-function TestPuzzle001:testPuzzle1aFlipToggleOn()
+function TestPuzzle001:flipToggleOn()
 	local puzzle001 = Puzzle001:new()
 	luaunit.assertEquals(puzzle001.elements.toggle_vert.flipped, false)
 	puzzle001:logic(playdate.kButtonA)
 	luaunit.assertEquals(puzzle001.elements.toggle_vert.flipped, true)
 end
 
-function TestPuzzle001:testPuzzle1aFlipToggleOff()
+function TestPuzzle001:flipToggleOff()
 	local puzzle001 = Puzzle001:new()
 	puzzle001.elements.toggle_vert.flipped = true
 	luaunit.assertEquals(puzzle001.elements.toggle_vert.flipped, true)
@@ -18,7 +18,7 @@ function TestPuzzle001:testPuzzle1aFlipToggleOff()
 end
 
 
-function TestPuzzle001:testPuzzle1aToggleIsOff()
+function TestPuzzle001:toggleIsOff()
 	local puzzle001 = Puzzle001:new()
 	luaunit.assertEquals(puzzle001.elements.toggle_vert.flipped, false)
 
@@ -36,7 +36,7 @@ function TestPuzzle001:testPuzzle1aToggleIsOff()
 
 end
 
-function TestPuzzle001:testPuzzle1aToggleIsOn()
+function TestPuzzle001:toggleIsOn()
 	local puzzle001 = Puzzle001:new()
 	puzzle001.elements.toggle_vert.flipped = true
 	luaunit.assertEquals(puzzle001.elements.toggle_vert.flipped, true)

@@ -11,6 +11,7 @@ import 'puzzle-tests/test_puzzle001c'
 import 'puzzle-tests/test_puzzle001d'
 import 'puzzle-tests/test_puzzle002'
 import 'puzzle-tests/test_puzzle003'
+import 'puzzle-tests/test_puzzle004'
 
 
 -- turns off updating
@@ -20,17 +21,15 @@ playdate.stop()
 luaunit.PRINT_TABLE_REF_IN_ERROR_MSG = true
 
 -- process the command line args (if any)
--- local testOutputFilename = "test_output"
--- local outputType = "text"
-local luaunit_args = {'--output', 'text', '--verbose'}
--- luaunit_args notes
--- --output: text or tap
--- removed -r because no value
+local luaunit_args = {'--output', 'tap'}
+-- local luaunit_args = {'--output', 'text', '--verbose'}
+
+print("\n# running unit tests")
 
 -- run the tests
 local returnValue = luaunit.LuaUnit.run(table.unpack(luaunit_args))
 
-print("unit test return value = "..returnValue)
+-- print("unit test return value = "..returnValue)
 
 if (returnValue == 0) then
     playdate.graphics.drawText("*SUCCESS*", 166, 180)

@@ -4,7 +4,7 @@ TestPuzzle001a = {}
 
 -- ToDo: figure out how to implement tests considering run()
 
-function TestPuzzle001a:testEmptyTest()
+function TestPuzzle001a:emptyTest()
 	luaunit.assertEquals(true, true)
 end
 

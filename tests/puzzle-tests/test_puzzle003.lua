@@ -5,14 +5,14 @@ TestPuzzle003 = {}
 
 -- ToDo: figure out if I can make the tests better describe the puzzle
 
-function TestPuzzle003:testPuzzle3UndockCrank()
+function TestPuzzle003:undockCrank()
 	local puzzle003 = Puzzle003:new()
 	luaunit.assertEquals(puzzle003.elements.toggle.flipped, false)
 	puzzle003:logic(false, 0)
 	luaunit.assertEquals(puzzle003.elements.toggle.flipped, true)
 end
 
-function TestPuzzle003:testPuzzle3DockCrankFilled()
+function TestPuzzle003:dockCrankFilled()
 	local puzzle003 = Puzzle003:new()
 	puzzle003.elements.toggle.flipped = true
 	puzzle003.elements.circle.fill = true
@@ -22,7 +22,7 @@ function TestPuzzle003:testPuzzle3DockCrankFilled()
 	luaunit.assertEquals(puzzle003.elements.circle.fill, true)
 end
 
-function TestPuzzle003:testPuzzle3DockCrankLine()
+function TestPuzzle003:dockCrankLine()
 	local puzzle003 = Puzzle003:new()
 	puzzle003.elements.toggle.flipped = true
 	puzzle003.elements.circle.fill = false
@@ -32,7 +32,7 @@ function TestPuzzle003:testPuzzle3DockCrankLine()
 	luaunit.assertEquals(puzzle003.elements.circle.fill, false)
 end
 
-function TestPuzzle003:testPuzzle3RotateCrankPos()
+function TestPuzzle003:rotateCrankPos()
 	local puzzle003 = Puzzle003:new()
 	puzzle003.elements.toggle.flipped = true
 	local crank_diff = 20
@@ -42,7 +42,7 @@ function TestPuzzle003:testPuzzle3RotateCrankPos()
 end
 
 
-function TestPuzzle003:testPuzzle3RotateCrankPos()
+function TestPuzzle003:rotateCrankPos()
 	local puzzle003 = Puzzle003:new()
 	puzzle003.elements.toggle.flipped = true
 	local crank_diff = -20

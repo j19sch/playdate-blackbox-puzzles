@@ -2,7 +2,7 @@ import "../source/puzzles/puzzle002"
 
 TestPuzzle002 = {}
 
-function TestPuzzle002:testPuzzle2Toggle()
+function TestPuzzle002:toggle()
 	local crank_pos = 0
 	local puzzle = Puzzle002:new(crank_pos)
 

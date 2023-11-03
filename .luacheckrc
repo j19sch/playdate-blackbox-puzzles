@@ -45,6 +45,7 @@ stds.tests = {
       "TestPuzzle001",
       "TestPuzzle002",
       "TestPuzzle003",
+      "TestPuzzle004",
       "TestPuzzle001a",
       "TestPuzzle001b",
       "TestPuzzle001c",

@@ -1,5 +1,7 @@
 # Playdate Blackbox Puzzles
 
+[![Luacheck](https://img.shields.io/github/actions/workflow/status/lunarmodules/luacheck/luacheck.yml?branch=master&label=Luacheck&logo=Lua)](https://github.com//j19sch/playdate-blackbox-puzzles/actions?workflow=Luacheck)
+
 Building some [Black Box Puzzles](http://blackboxpuzzles.workroomprds.com/) for Panic's [Playdate](https://play.date/)
 
 Black Box Puzzles are a creation of [James Lyndsay](https://www.workroom-productions.com/)

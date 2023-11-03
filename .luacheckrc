@@ -3,6 +3,7 @@ stds.elements = {
       "Button",
       "Circle",
       "Toggle",
+      "Light",
       }
 }
 

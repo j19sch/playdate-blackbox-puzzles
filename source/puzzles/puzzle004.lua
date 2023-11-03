@@ -2,48 +2,63 @@ local gfx <const> = playdate.graphics
 
 import "CoreLibs/animation"
 
-import "../elements/button"  -- should use a light instead
+import "../elements/light"
 
 
 Puzzle004 = {}
 
 function Puzzle004:new()
-	local blinker = gfx.animation.blinker.new(1000, 1000, true, 6, true)
+	local blinker = gfx.animation.blinker.new(1000, 1000, true, 10, false)
 	-- cycle needs to be an even number to avoid a glitch false
 	-- counter counts each true and false
 	blinker:startLoop()
     local newObj = {
 		elements = {
-			button_1 = Button:new(25, 92, false),
-			button_2 = Button:new(95, 92, false),
-			button_3 = Button:new(165, 92, false),
-			button_4 = Button:new(235, 92, false),
-			button_5 = Button:new(305, 92, false)
+			button_1 = Light:new(25, 90, false, 1),
+			button_2 = Light:new(95, 90, false, 2),
+			button_3 = Light:new(165, 90, false, 3),
+			button_4 = Light:new(235, 90, false, 4),
+			button_5 = Light:new(305, 90, false, 5)
 		},
-		-- blinker = gfx.animation.blinker.new(500, 500, true, 5, true),
-		blinker = blinker
+		blinker = blinker,
+		debug_cycles = false,
+		debug_duration = false
     }
     self.__index = self
     return setmetatable(newObj, self)
 end
 
 function Puzzle004:draw()
+	playdate.graphics.clear()
 	gfx.drawText("Playdate BlackBox Puzzle 004", 5, 5)
+	gfx.drawText("Press 'A' and/or 'B' to show/hide some numbers", 15, 210)
 	for _, val in pairs(self.elements) do
 		val:draw()
 	end
+	if self.debug_cycles == true then
+		gfx.drawText(tostring(self.blinker.cycles), 40, 45)
+	end
+	if self.debug_duration == true then
+		gfx.drawText(tostring(self.blinker.onDuration), 80, 45)
+	end
+
 end
 
 function Puzzle004:logic()
-	print("blinker " .. "counter: " .. tostring(self.blinker.counter) .. " on: " .. tostring(self.blinker.on))
-	print("blinker " .. "onDuration: " .. tostring(self.blinker.onDuration) ..
-		" offDuration: " .. tostring(self.blinker.offDuration))
-
-	if self.blinker.on == true and self.elements.button_1.pressed == false then
-		self.elements.button_1:toggle()
-	end
-	if self.blinker.on == false and self.elements.button_1.pressed == true then
-		self.elements.button_1:toggle()
+	for _, light in pairs(self.elements) do
+		if light.index <= (self.blinker.counter / 2) + 1 then
+			if self.blinker.on == true and light.on == false then
+				print("logic toggle")
+				light:toggle()
+			end
+			if self.blinker.on == false and light.on == true then
+				print("logic toggle")
+				light:toggle()
+			end
+		elseif light.on == true then
+			print("logic toggle")
+			light:toggle()
+		end
 	end
 
 	self.blinker:update()
@@ -52,15 +67,48 @@ end
 
 function Puzzle004:run()
 	if playdate.buttonJustPressed( playdate.kButtonUp ) then
-		print("button up")
-		self.blinker.onDuration = self.blinker.onDuration + 250
-		self.blinker.offDuration = self.blinker.onDuration + 250
+		if self.blinker.onDuration >= 7000 then
+			self.blinker.onDuration = 7000
+		else
+			self.blinker.onDuration = self.blinker.onDuration + 250
+		end
+
+		self.blinker.offDuration = self.blinker.onDuration
 	end
 	if playdate.buttonJustPressed( playdate.kButtonDown ) then
-		print("button down")
-		self.blinker.onDuration = self.blinker.onDuration - 250
-		self.blinker.offDuration = self.blinker.onDuration - 250
+		if self.blinker.onDuration <= 250 then
+			self.blinker.onDuration = 0
+		else
+			self.blinker.onDuration = self.blinker.onDuration - 250
+		end
+
+		self.blinker.offDuration = self.blinker.onDuration
 	end
+
+	-- This does not work, needs reset of the blink
+	if playdate.buttonJustPressed( playdate.kButtonRight ) then
+		if self.blinker.cycles >= 22 then
+			self.blinker.cycles = 22
+		else
+			self.blinker.cycles += 2
+		end
+	end
+	if playdate.buttonJustPressed( playdate.kButtonLeft ) then
+		if self.blinker.cycles <= 0 then
+			self.blinker.cycles = 0
+		else
+			self.blinker.cycles -= 2
+		end
+	end
+
+	if playdate.buttonJustPressed( playdate.kButtonA ) then
+		self.debug_duration = not self.debug_duration
+	end
+
+	if playdate.buttonJustPressed( playdate.kButtonB ) then
+		self.debug_cycles = not self.debug_cycles
+	end
+
 	self:logic()
 	self:draw()
 end

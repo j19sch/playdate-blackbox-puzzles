@@ -40,6 +40,7 @@ stds.tests = {
       "luaunit",
       "TestButton",
       "TestCircle",
+      "TestLight",
       "TestToggle",
       "TestPuzzle001",
       "TestPuzzle002",

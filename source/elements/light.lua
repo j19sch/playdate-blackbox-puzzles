@@ -1,6 +1,5 @@
 local gfx <const> = playdate.graphics
 
-
 Light = {}
 
 function Light:new(x_pos, y_pos, on, index)

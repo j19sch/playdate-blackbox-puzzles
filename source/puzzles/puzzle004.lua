@@ -16,11 +16,11 @@ function Puzzle004:new()
 		elements = {
 			-- this could be an array / list instead,
 			-- which would remove the need for the index on Lights
-			light_1 = Light:new(25, 100, false, 1),
-			light_2 = Light:new(95, 100, false, 2),
+			light_1 = Light:new(15, 100, false, 1),
+			light_2 = Light:new(90, 100, false, 2),
 			light_3 = Light:new(165, 100, false, 3),
-			light_4 = Light:new(235, 100, false, 4),
-			light_5 = Light:new(305, 100, false, 5)
+			light_4 = Light:new(240, 100, false, 4),
+			light_5 = Light:new(315, 100, false, 5)
 		},
 		blinker = blinker,
 		debug_cycles = false,
@@ -48,8 +48,8 @@ function Puzzle004:draw()
 end
 
 function Puzzle004:increase_duration()
-	if self.blinker.onDuration >= 7000 then
-		self.blinker.onDuration = 7000
+	if self.blinker.onDuration >= 9250 then
+		self.blinker.onDuration = 9250
 	else
 		self.blinker.onDuration = self.blinker.onDuration + 250
 	end
@@ -58,8 +58,8 @@ function Puzzle004:increase_duration()
 end
 
 function Puzzle004:decrease_duration()
-	if self.blinker.onDuration <= 0 then
-		self.blinker.onDuration = 0
+	if self.blinker.onDuration <= 250 then
+		self.blinker.onDuration = 250
 	else
 		self.blinker.onDuration = self.blinker.onDuration - 250
 	end

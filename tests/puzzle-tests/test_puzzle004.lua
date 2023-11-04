@@ -16,13 +16,13 @@ end
 
 function TestPuzzle004:testIncreaseDurationLimit()
 	local puzzle = Puzzle004:new()
-	puzzle.blinker.onDuration = 7000
-	puzzle.blinker.offDuration = 7000
+	puzzle.blinker.onDuration = 9250
+	puzzle.blinker.offDuration = 9250
 
 	puzzle:increase_duration()
 
-	luaunit.assertEquals(puzzle.blinker.onDuration, 7000)
-	luaunit.assertEquals(puzzle.blinker.offDuration, 7000)
+	luaunit.assertEquals(puzzle.blinker.onDuration, 9250)
+	luaunit.assertEquals(puzzle.blinker.offDuration, 9250)
 end
 
 function TestPuzzle004:testDecreaseDuration()
@@ -38,13 +38,13 @@ end
 
 function TestPuzzle004:testDecreaseDurationLimit()
 	local puzzle = Puzzle004:new()
-	puzzle.blinker.onDuration = 0
-	puzzle.blinker.offDuration = 0
+	puzzle.blinker.onDuration = 250
+	puzzle.blinker.offDuration = 250
 
 	puzzle:decrease_duration()
 
-	luaunit.assertEquals(puzzle.blinker.onDuration, 0)
-	luaunit.assertEquals(puzzle.blinker.offDuration, 0)
+	luaunit.assertEquals(puzzle.blinker.onDuration, 250)
+	luaunit.assertEquals(puzzle.blinker.offDuration, 250)
 end
 
 function TestPuzzle004:testIncreaseCycles()

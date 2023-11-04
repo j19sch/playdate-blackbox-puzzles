@@ -3,10 +3,10 @@ local gfx <const> = playdate.graphics
 Light = {}
 
 function Light:new(x_pos, y_pos, on, index)
-    local on_image = gfx.image.new("assets/images/light-on.png")
+    local on_image = gfx.image.new("assets/images/light-alt-on.png")
     assert(on_image, "could not load image for light on")
 
-    local off_image = gfx.image.new("assets/images/light-off.png")
+    local off_image = gfx.image.new("assets/images/light-alt-off.png")
     assert(off_image, "could not load image for light off")
 
     local img

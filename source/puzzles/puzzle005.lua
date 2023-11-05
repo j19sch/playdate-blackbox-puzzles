@@ -14,7 +14,8 @@ Puzzle005 = {}
 function Puzzle005:new()
     local newObj = {
 		elements = {
-			dial = Dial:new(120, 120, 0)
+			dial_1 = Dial:new(120, 120, 0),
+			dial_2 = Dial2:new(270, 120, 0)
 		},
     }
     self.__index = self
@@ -36,7 +37,8 @@ function Puzzle005:run()
 	local crank_pos = playdate.getCrankPosition()
 	crank_pos = math.floor(crank_pos)
 
-	self.elements.dial:rotate_to(crank_pos)
+	self.elements.dial_1:rotate_to(crank_pos)
+	self.elements.dial_2:rotate_to(crank_pos)
 
 	self:draw()
 	gfx.drawText(tostring(crank_pos), 15, 25)

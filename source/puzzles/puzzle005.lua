@@ -14,8 +14,9 @@ Puzzle005 = {}
 function Puzzle005:new()
     local newObj = {
 		elements = {
-			dial_1 = Dial:new(120, 120, 0),
-			dial_2 = Dial2:new(270, 120, 0)
+			dial_1 = Dial:new(80, 120, 0),
+			dial_2 = Dial2:new(200, 120, 0),
+			dial_3 = Dial3:new(320, 120, 0)
 		},
     }
     self.__index = self
@@ -39,6 +40,7 @@ function Puzzle005:run()
 
 	self.elements.dial_1:rotate_to(crank_pos)
 	self.elements.dial_2:rotate_to(crank_pos)
+	self.elements.dial_3:rotate_to(crank_pos)
 
 	self:draw()
 	gfx.drawText(tostring(crank_pos), 15, 25)

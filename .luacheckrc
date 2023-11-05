@@ -4,6 +4,7 @@ stds.elements = {
       "Circle",
       "Dial",
       "Dial2",
+      "Dial3",
       "Toggle",
       "Light",
       }

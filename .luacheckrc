@@ -2,6 +2,7 @@ stds.elements = {
    globals = {
       "Button",
       "Circle",
+      "Dial",
       "Toggle",
       "Light",
       }
@@ -19,6 +20,7 @@ stds.puzzles = {
       "Puzzle002",
       "Puzzle003",
       "Puzzle004",
+      "Puzzle005",
    }
 }
 

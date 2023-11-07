@@ -2,9 +2,8 @@ stds.elements = {
    globals = {
       "Button",
       "Circle",
-      "Dial",
-      "Dial2",
-      "Dial3",
+      "RoundDial",
+      "SquareDial",
       "Toggle",
       "Light",
       }

@@ -1,33 +1,10 @@
 local gfx <const> = playdate.graphics
 
-Dial = {}
+-- ToDo: less code duplication
 
-function Dial:new(x_pos, y_pos, start_angle)
-    local img = gfx.image.new("assets/images/dial-v1.png")
-    assert(img, "could not load image for dial")
+SquareDial = {}
 
-    local newObj = {
-        x = x_pos,
-        y = y_pos,
-        angle = start_angle,
-        image = img
-    }
-    self.__index = self
-    return setmetatable(newObj, self)
-end
-
-function Dial:draw()
-    self.image:drawRotated(self.x, self.y, self.angle)
-end
-
-function Dial:rotate_to(new_angle)
-    self.angle = new_angle
-end
-
-
-Dial2 = {}
-
-function Dial2:new(x_pos, y_pos, start_angle)
+function SquareDial:new(x_pos, y_pos, start_angle, enabled)
     local img = gfx.image.new("assets/images/dial-v2.png")
     assert(img, "could not load image for dial")
 
@@ -35,24 +12,37 @@ function Dial2:new(x_pos, y_pos, start_angle)
         x = x_pos,
         y = y_pos,
         angle = start_angle,
+        enabled = enabled,
         image = img
     }
     self.__index = self
     return setmetatable(newObj, self)
 end
 
-function Dial2:draw()
+function SquareDial:draw()
     self.image:drawRotated(self.x, self.y, self.angle)
 end
 
-function Dial2:rotate_to(new_angle)
-    self.angle = new_angle
+function SquareDial:toggle()
+    self.enabled = not self.enabled
+end
+
+function SquareDial:rotate(delta)
+    if self.enabled == true then
+        self.angle = (self.angle + delta) % 360
+    end
+end
+
+function SquareDial:rotate_to(new_angle)
+    if self.enabled == true then
+        self.angle = new_angle
+    end
 end
 
 
-Dial3 = {}
+RoundDial = {}
 
-function Dial3:new(x_pos, y_pos, start_angle)
+function RoundDial:new(x_pos, y_pos, start_angle, enabled)
     local img = gfx.image.new("assets/images/dial-v3.png")
     assert(img, "could not load image for dial")
 
@@ -60,16 +50,29 @@ function Dial3:new(x_pos, y_pos, start_angle)
         x = x_pos,
         y = y_pos,
         angle = start_angle,
+        enabled = enabled,
         image = img
     }
     self.__index = self
     return setmetatable(newObj, self)
 end
 
-function Dial3:draw()
+function RoundDial:draw()
     self.image:drawRotated(self.x, self.y, self.angle)
 end
 
-function Dial3:rotate_to(new_angle)
-    self.angle = new_angle
+function RoundDial:toggle()
+    self.enabled = not self.enabled
+end
+
+function RoundDial:rotate(delta)
+    if self.enabled == true then
+        self.angle = (self.angle + delta) % 360
+    end
+end
+
+function RoundDial:rotate_to(new_angle)
+    if self.enabled == true then
+        self.angle = new_angle
+    end
 end

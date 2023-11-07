@@ -74,6 +74,12 @@ function Puzzle005:run()
 		self.elements.light_2:toggle()
 	end
 
+	-- bug: middle light does not light up when dials are on opposite sides of zero
+	-- could be an interesting bug to keep in
+	-- solution: <= 45 or > 315
+	-- tests would be useful here!
+	-- 30 might be sufficient, but it's nice it lights up for longer than the other two
+
 	if math.abs(self.elements.dial_left.angle - self.elements.dial_right.angle) > 45 and
 		self.elements.light_2.on == true then
 		self.elements.light_2:toggle()

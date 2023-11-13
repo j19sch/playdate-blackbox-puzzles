@@ -42,3 +42,17 @@ function Light:toggle()
         self.image = self.image_off
     end
 end
+
+function Light:be_on()
+    if self.on == false then
+        self.on = true
+        self.image = self.image_on
+    end
+end
+
+function Light:be_off()
+    if self.on == true then
+        self.on = false
+        self.image = self.image_off
+    end
+end

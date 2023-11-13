@@ -16,9 +16,9 @@ Puzzle005 = {}
 function Puzzle005:new()
     local newObj = {
 		elements = {
-			dial_left = RoundDial:new(60, 95, 180, true),
+			dial_left = Dial:new(60, 95, 180, "round", true),
 			button_left = Button:new(28, 145, true),
-			dial_right = SquareDial:new(340, 95, 0, false),
+			dial_right = Dial:new(340, 95, 0, "square", false),
 			button_right = Button:new(308, 145, false),
 			light_1 = Light:new(168, 26,true, 1),
 			light_2 = Light:new(168, 96,false, 1),
@@ -39,24 +39,23 @@ function Puzzle005:draw()
 	end
 end
 
-function Puzzle005:run()
-	if playdate.buttonJustPressed( playdate.kButtonA ) then
-		self.elements.button_right:toggle()
-		self.elements.dial_right:toggle()
-	end
-	if playdate.buttonJustPressed( playdate.kButtonB ) then
-		self.elements.button_left:toggle()
-		self.elements.dial_left:toggle()
+function Puzzle005:toggle_left_dial()
+	self.elements.button_left:toggle()
+	self.elements.dial_left:toggle()
+end
+
+function Puzzle005:toggle_right_dial()
+	self.elements.button_right:toggle()
+	self.elements.dial_right:toggle()
+end
+
+function Puzzle005:logic()
+	if self.elements.dial_left.angle >= 170 and self.elements.dial_left.angle <= 190 then
+		self.elements.light_1:be_on()
 	end
 
-	if self.elements.dial_left.angle >= 170 and self.elements.dial_left.angle <= 190 and
-		self.elements.light_1.on == false then
-		self.elements.light_1:toggle()
-	end
-
-	if (self.elements.dial_left.angle < 170 or self.elements.dial_left.angle > 190) and
-		self.elements.light_1.on == true then
-		self.elements.light_1:toggle()
+	if self.elements.dial_left.angle < 170 or self.elements.dial_left.angle > 190 then
+		self.elements.light_1:be_off()
 	end
 
 	if self.elements.dial_right.angle >= 30 and self.elements.dial_right.angle <= 60 and
@@ -75,18 +74,28 @@ function Puzzle005:run()
 		self.elements.light_2:toggle()
 	end
 
-
 	if (math.abs(self.elements.dial_left.angle - self.elements.dial_right.angle) > 30 and
 		math.abs(self.elements.dial_left.angle - self.elements.dial_right.angle) < 330) and
 		self.elements.light_2.on == true then
 		self.elements.light_2:toggle()
 	end
+end
+
+function Puzzle005:run()
+	if playdate.buttonJustPressed( playdate.kButtonA ) then
+		self:toggle_right_dial()
+	end
+	if playdate.buttonJustPressed( playdate.kButtonB ) then
+		self:toggle_left_dial()
+	end
+
+	-- logic before crank change and thus dial rotation?
+	self:logic()
 
 	local crank_change = playdate.getCrankChange()
 	-- Does it make sense to have the enabled check in the dial?
 	self.elements.dial_left:rotate(crank_change)
 	self.elements.dial_right:rotate(crank_change)
-
 
 	self:draw()
 end

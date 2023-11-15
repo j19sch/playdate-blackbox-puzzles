@@ -1,5 +1,6 @@
 # Playdate package
 *.pdx/
+*.pdx.zip
 
 # assets for tests, copied by Makefile
 tests/assets

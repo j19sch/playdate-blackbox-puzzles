@@ -1,5 +1,7 @@
 name=Playdate Blackbox Puzzles
 author=Joep Schuurkes
 description=Black Box Puzzles on Playdate, inspired by workroomprds
-bundleID=com.panic.blackboxpuzzles
+bundleID=garden.smallsheds.playdateblackboxpuzzles
 imagePath=assets/metadata
+version=1.0
+buildnumber=1001

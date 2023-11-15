@@ -5,6 +5,9 @@ build-tests: lint-tests
 	cp -R -u source/assets tests
 	pdc -k -I source tests pbbp-tests.pdx
 
+build-release: lint
+	pdc -s -k source pbbp.pdx
+
 lint:
 	luacheck ./source
 

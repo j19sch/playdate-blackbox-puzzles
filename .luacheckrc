@@ -2,6 +2,7 @@ stds.elements = {
    globals = {
       "Button",
       "Circle",
+      "Dial",
       "Toggle",
       "Light",
       }
@@ -19,6 +20,7 @@ stds.puzzles = {
       "Puzzle002",
       "Puzzle003",
       "Puzzle004",
+      "Puzzle005",
    }
 }
 
@@ -40,12 +42,14 @@ stds.tests = {
       "luaunit",
       "TestButton",
       "TestCircle",
+      "TestDial",
       "TestLight",
       "TestToggle",
       "TestPuzzle001",
       "TestPuzzle002",
       "TestPuzzle003",
       "TestPuzzle004",
+      "TestPuzzle005",
       "TestPuzzle001a",
       "TestPuzzle001b",
       "TestPuzzle001c",

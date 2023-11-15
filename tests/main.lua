@@ -2,6 +2,7 @@ import 'luaunit/playdate_luaunit_fix'
 import 'luaunit/luaunit'
 
 import 'element-tests/test_button'
+import 'element-tests/test_dial'
 import 'element-tests/test_toggle'
 
 import 'puzzle-tests/test_puzzle001'
@@ -12,6 +13,7 @@ import 'puzzle-tests/test_puzzle001d'
 import 'puzzle-tests/test_puzzle002'
 import 'puzzle-tests/test_puzzle003'
 import 'puzzle-tests/test_puzzle004'
+import 'puzzle-tests/test_puzzle005'
 
 
 -- turns off updating

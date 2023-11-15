@@ -4,8 +4,8 @@ Dial = {}
 
 function Dial:new(x_pos, y_pos, start_angle, shape, enabled)
     local image_table = {
-        square = "dial-v2.png",
-        round = "dial-v3.png"
+        square = "dial-square.png",
+        round = "dial-round.png"
     }
 
     local img = gfx.image.new("assets/images/" .. image_table[shape])

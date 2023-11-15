@@ -59,7 +59,35 @@ function TestPuzzle005:testLightOne()
 end
 
 function TestPuzzle005:testLightTWo()
-	-- ToDo
+	local puzzle = Puzzle005:new()
+	luaunit.assertEquals(puzzle.elements.dial_left.enabled, true)
+	luaunit.assertEquals(puzzle.elements.dial_left.angle, 180)
+	luaunit.assertEquals(puzzle.elements.dial_right.enabled, false)
+	luaunit.assertEquals(puzzle.elements.dial_right.angle, 0)
+	luaunit.assertEquals(puzzle.elements.light_2.on, false)
+
+	puzzle:toggle_right_dial()
+	luaunit.assertEquals(puzzle.elements.dial_right.enabled, true)
+
+	puzzle.elements.dial_left:rotate(150)
+	luaunit.assertEquals(puzzle.elements.dial_left.angle, 330)
+	puzzle:logic()
+	luaunit.assertEquals(puzzle.elements.light_2.on, true)
+
+	puzzle.elements.dial_left:rotate(-1)
+	luaunit.assertEquals(puzzle.elements.dial_left.angle, 329)
+	puzzle:logic()
+	luaunit.assertEquals(puzzle.elements.light_2.on, false)
+
+	puzzle.elements.dial_left:rotate(61)
+	luaunit.assertEquals(puzzle.elements.dial_left.angle, 30)
+	puzzle:logic()
+	luaunit.assertEquals(puzzle.elements.light_2.on, true)
+
+	puzzle.elements.dial_left:rotate(1)
+	luaunit.assertEquals(puzzle.elements.dial_left.angle, 31)
+	puzzle:logic()
+	luaunit.assertEquals(puzzle.elements.light_2.on, false)
 end
 
 function TestPuzzle005:testLightThree()

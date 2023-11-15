@@ -5,12 +5,6 @@ import "../elements/dial"
 import "../elements/light"
 
 
--- ToDo
--- clean up, optimize, refactor, etc etc
--- how much logic in the setup and how much in the logic?
-
-
-
 Puzzle005 = {}
 
 function Puzzle005:new()
@@ -50,11 +44,10 @@ function Puzzle005:toggle_right_dial()
 end
 
 function Puzzle005:logic()
+	-- many different ways to structure this logic
 	if self.elements.dial_left.angle >= 170 and self.elements.dial_left.angle <= 190 then
 		self.elements.light_1:be_on()
-	end
-
-	if self.elements.dial_left.angle < 170 or self.elements.dial_left.angle > 190 then
+	else
 		self.elements.light_1:be_off()
 	end
 
@@ -89,13 +82,11 @@ function Puzzle005:run()
 		self:toggle_left_dial()
 	end
 
-	-- logic before crank change and thus dial rotation?
-	self:logic()
-
 	local crank_change = playdate.getCrankChange()
-	-- Does it make sense to have the enabled check in the dial?
 	self.elements.dial_left:rotate(crank_change)
 	self.elements.dial_right:rotate(crank_change)
+
+	self:logic()
 
 	self:draw()
 end

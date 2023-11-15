@@ -31,6 +31,7 @@ function Dial:toggle()
 end
 
 function Dial:rotate(delta)
+    -- convinced and not convinced this is where to check for enabled
     if self.enabled == true then
         self.angle = (self.angle + delta) % 360
     end
